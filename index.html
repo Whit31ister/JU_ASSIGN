@@ -3,68 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="JU Assignments is a clean semester-wise archive for assignment files stored in the assignments folder."
+  >
   <title>JU Assignments</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <div class="eyebrow">JU Assignment Browser</div>
-      <h1>Browse assignments by subject and semester.</h1>
-      <p class="intro">
-        Pick a subject, choose the semester for that subject, and then select the assignment you want to open.
-        This is a simple starter page you can extend later with real files, PDFs, or submission links.
-      </p>
-    </section>
+  <div class="site-shell">
+    <header class="site-header">
+      <div>
+        <p class="brand">JU Assignments</p>
+        <p class="site-caption">Semester-wise assignment archive</p>
+      </div>
+      <p class="site-note">Built for the <code>assignments/</code> folder workflow</p>
+    </header>
 
-    <section class="layout">
-      <aside class="panel controls">
-        <h2 class="section-title">Filters</h2>
-
-        <div class="control-group">
-          <label for="subjectSelect">Subject</label>
-          <select id="subjectSelect" aria-label="Choose subject"></select>
+    <main class="page-grid">
+      <section class="card hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Minimal Assignment Browser</p>
+          <h1>Clean structure, clear filters, and a simple naming-based workflow.</h1>
+          <p class="hero-text">
+            Keep assignment files inside <code>assignments/</code> using the format
+            <code>sem_sub_assignment_no.ext</code>. The site parses semester, subject, and assignment number
+            directly from the file name.
+          </p>
         </div>
 
-        <div class="control-group">
-          <label for="semesterSelect">Semester</label>
-          <select id="semesterSelect" aria-label="Choose semester"></select>
-        </div>
-
-        <div>
-          <label>How it works</label>
-          <div class="pill-row">
-            <span class="pill">1. Choose subject</span>
-            <span class="pill">2. Choose semester</span>
-            <span class="pill">3. Pick assignment</span>
-          </div>
-        </div>
-      </aside>
-
-      <section class="panel content">
-        <div class="summary">
-          <div class="summary-box">
-            <strong>Selected Subject</strong>
-            <span id="selectedSubject">-</span>
-          </div>
-          <div class="summary-box">
-            <strong>Selected Semester</strong>
-            <span id="selectedSemester">-</span>
-          </div>
-          <div class="summary-box">
-            <strong>Total Assignments</strong>
-            <span id="assignmentCount">0</span>
-          </div>
-        </div>
-
-        <div id="assignmentList" class="assignments"></div>
-        <div id="assignmentViewer" class="viewer" hidden></div>
-        <div id="emptyState" class="empty-state" hidden>
-          <p>No assignments are available for this selection yet.</p>
+        <div class="hero-metrics">
+          <article class="metric">
+            <span id="totalAssignments">0</span>
+            <small>Total assignments</small>
+          </article>
+          <article class="metric">
+            <span id="totalSubjects">0</span>
+            <small>Subjects</small>
+          </article>
+          <article class="metric">
+            <span id="totalSemesters">0</span>
+            <small>Semesters</small>
+          </article>
         </div>
       </section>
-    </section>
-  </main>
-  <script src="scripts/app.js"></script>
+
+      <aside class="card sidebar">
+        <div class="section-heading">
+          <p class="eyebrow">Controls</p>
+          <h2>Browse assignments</h2>
+          <p class="section-copy">Filter the library or load a local folder while you prepare the published archive.</p>
+        </div>
+
+        <div class="field">
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="search" placeholder="Search by title, subject, file name">
+        </div>
+
+        <div class="field">
+          <label for="semesterFilter">Semester</label>
+          <select id="semesterFilter">
+            <option value="all">All semesters</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="subjectFilter">Subject</label>
+          <select id="subjectFilter">
+            <option value="all">All subjects</option>
+          </select>
+        </div>
+
+        <div class="button-row">
+          <button id="loadFolderButton" class="button button-primary" type="button">Load assignments folder</button>
+          <button id="resetSourceButton" class="button button-secondary" type="button">Use site manifest</button>
+          <input id="folderInput" type="file" webkitdirectory directory multiple hidden>
+        </div>
+
+        <section class="status-panel" aria-live="polite">
+          <p class="status-label">Current source</p>
+          <strong id="sourceLabel">Checking manifest...</strong>
+          <p id="statusMessage" class="status-message">Preparing the assignment library.</p>
+        </section>
+
+        <section class="guide-panel">
+          <h3>Filename rule</h3>
+          <code>sem_sub_assignment_no.ext</code>
+          <p>Example: <code>3_dbms_assignment_2.pdf</code></p>
+          <p>The semester can be numeric or text, the subject can be abbreviated, and any file extension is supported.</p>
+        </section>
+
+        <section id="ignoredPanel" class="guide-panel" hidden>
+          <h3>Ignored files</h3>
+          <p>These files do not match the required naming format.</p>
+          <ul id="ignoredList" class="ignored-list"></ul>
+        </section>
+      </aside>
+
+      <section class="content">
+        <div class="content-header">
+          <div>
+            <p class="eyebrow">Library</p>
+            <h2>Assignments</h2>
+          </div>
+          <p id="resultsSummary" class="results-summary">0 assignments visible</p>
+        </div>
+
+        <div class="content-grid">
+          <section class="card list-card">
+            <div id="assignmentList" class="assignment-list" aria-live="polite"></div>
+            <div id="emptyState" class="empty-state" hidden>
+              <h3>No assignments found</h3>
+              <p>Adjust the filters, load a local folder, or add files to <code>assignments/manifest.json</code>.</p>
+            </div>
+          </section>
+
+          <aside id="detailPanel" class="card detail-card">
+            <p class="detail-kicker">Assignment details</p>
+            <h3>Choose a file</h3>
+            <p class="detail-text">Select an assignment card to see its metadata and open the linked file.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script defer src="assets/js/core/config.js"></script>
+  <script defer src="assets/js/core/parser.js"></script>
+  <script defer src="assets/js/services/catalog.js"></script>
+  <script defer src="assets/js/ui/render.js"></script>
+  <script defer src="assets/js/app.js"></script>
 </body>
 </html>

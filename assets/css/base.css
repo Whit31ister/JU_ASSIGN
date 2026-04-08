@@ -1,0 +1,97 @@
+:root {
+  --bg: #eef1eb;
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-strong: #ffffff;
+  --surface-soft: #f5f7f2;
+  --text: #162118;
+  --muted: #5a665c;
+  --line: rgba(22, 33, 24, 0.1);
+  --line-strong: rgba(22, 33, 24, 0.16);
+  --accent: #255f48;
+  --accent-strong: #1a4433;
+  --accent-soft: rgba(37, 95, 72, 0.1);
+  --shadow: 0 24px 60px rgba(30, 41, 34, 0.1);
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(37, 95, 72, 0.1), transparent 28%),
+    radial-gradient(circle at right 16% bottom 22%, rgba(22, 33, 24, 0.06), transparent 30%),
+    linear-gradient(180deg, #f8faf6 0%, var(--bg) 100%);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+code {
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(22, 33, 24, 0.06);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--text);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(37, 95, 72, 0.35);
+  box-shadow: 0 0 0 4px rgba(37, 95, 72, 0.08);
+}
