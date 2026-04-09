@@ -204,6 +204,7 @@
   border-radius: var(--radius-md);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 242, 0.9) 100%);
   text-align: left;
+  text-decoration: none;
   transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 

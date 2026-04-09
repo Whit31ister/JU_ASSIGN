@@ -1,3 +1,39 @@
 {
-  "files": []
+  "files": [
+    {
+      "path": "assignments/1_EM1_assignment_1-2.pdf",
+      "title": "Engineering Mathematics I Assignment 1-2",
+      "description": "Matrices, linear dependence, and eigenvalue problems."
+    },
+    {
+      "path": "assignments/1_applied-physics_assignment_3.docx",
+      "title": "Applied Physics Assignment 3",
+      "description": "Semiconductor fundamentals, conductivity, and PN junction diode questions."
+    },
+    {
+      "path": "assignments/1_applied-physics_assignment_4.docx",
+      "title": "Applied Physics Assignment 4",
+      "description": "Optical fiber, holography, and laser theory questions."
+    },
+    {
+      "path": "assignments/2_CPP_assignment_3.pdf",
+      "title": "C++ Assignment 3",
+      "description": "Constructors, member functions, and parameterized constructors."
+    },
+    {
+      "path": "assignments/2_EM2_assignment_3.pdf",
+      "title": "Engineering Mathematics II Assignment 3",
+      "description": "Differential equations tutorial covering order, degree, integrating factor, and exact equations."
+    },
+    {
+      "path": "assignments/2_EM2_assignment_4.pdf",
+      "title": "Engineering Mathematics II Assignment 4",
+      "description": "Differential equations practice set with Clairaut and related forms."
+    },
+    {
+      "path": "assignments/2_professional-skills_assignment_3.pdf",
+      "title": "Professional Skills Assignment 3 Solutions",
+      "description": "Unit III solutions on cognitive skills, problem-solving, empathy, and stress management."
+    }
+  ]
 }

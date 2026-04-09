@@ -43,13 +43,13 @@
     });
 
     elements.assignmentList.addEventListener("click", function handleCardSelection(event) {
-      var button = event.target.closest("[data-assignment-id]");
+      var card = event.target.closest("[data-assignment-id]");
 
-      if (!button) {
+      if (!card) {
         return;
       }
 
-      handlers.onAssignmentSelect(button.getAttribute("data-assignment-id"));
+      handlers.onAssignmentSelect(card.getAttribute("data-assignment-id"));
     });
   }
 
@@ -83,10 +83,12 @@
     elements.emptyState.hidden = assignments.length > 0;
 
     assignments.forEach(function appendAssignment(assignment) {
-      var card = document.createElement("button");
-      card.type = "button";
+      var card = document.createElement("a");
       card.className = "assignment-card" + (assignment.id === selectedId ? " is-active" : "");
       card.setAttribute("data-assignment-id", assignment.id);
+      card.href = assignment.href;
+      card.target = "_blank";
+      card.rel = "noreferrer";
 
       var cardHeader = document.createElement("div");
       cardHeader.className = "assignment-card-header";
@@ -146,11 +148,11 @@
       placeholderKicker.textContent = "Assignment details";
 
       var placeholderTitle = document.createElement("h3");
-      placeholderTitle.textContent = "Choose a file";
+      placeholderTitle.textContent = "Open an assignment";
 
       var placeholderText = document.createElement("p");
       placeholderText.className = "detail-text";
-      placeholderText.textContent = "Select an assignment card to see its metadata and open the linked file.";
+      placeholderText.textContent = "Click an assignment card to open the file in a new tab and review its metadata here.";
 
       elements.detailPanel.appendChild(placeholderKicker);
       elements.detailPanel.appendChild(placeholderTitle);
