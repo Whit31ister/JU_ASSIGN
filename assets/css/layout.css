@@ -1,7 +1,7 @@
 .site-shell {
-  width: min(1200px, calc(100% - 32px));
+  width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 28px 0 48px;
+  padding: 24px 0 40px;
 }
 
 .site-header {
@@ -9,38 +9,39 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .page-grid {
   display: grid;
   grid-template-columns: minmax(280px, 320px) minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
   align-items: start;
 }
 
 .hero {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.9fr);
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
+  gap: 1rem;
   align-items: end;
 }
 
 .sidebar {
   position: sticky;
-  top: 20px;
+  top: 16px;
 }
 
 .content {
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .content-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.72fr);
+  gap: 0.9rem;
+  align-items: start;
 }
 
 @media (max-width: 960px) {
@@ -58,7 +59,7 @@
 @media (max-width: 640px) {
   .site-shell {
     width: min(100% - 20px, 1200px);
-    padding-top: 20px;
+    padding-top: 18px;
   }
 
   .site-header {
