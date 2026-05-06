@@ -1,5 +1,6 @@
 .site-shell {
-  width: min(1400px, calc(100% - 48px));
+  width: calc(100% - 64px);
+  max-width: 1800px;
   margin: 0 auto;
   padding: 32px 0 64px;
 }
@@ -41,7 +42,7 @@
 
 .content {
   display: grid;
-  gap: 1.5rem;
+  gap: 0.5rem;
 }
 
 .content-grid {
@@ -70,7 +71,7 @@
 
 @media (max-width: 640px) {
   .site-shell {
-    width: min(100% - 32px, 1400px);
+    width: calc(100% - 32px);
     padding-top: 24px;
   }
 

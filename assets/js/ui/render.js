@@ -3,8 +3,6 @@
 
   function cacheElements() {
     elements.searchInput = document.getElementById("searchInput");
-    elements.semesterFilter = document.getElementById("semesterFilter");
-    elements.subjectFilter = document.getElementById("subjectFilter");
     elements.loadFolderButton = document.getElementById("loadFolderButton");
     elements.resetSourceButton = document.getElementById("resetSourceButton");
     elements.folderInput = document.getElementById("folderInput");
@@ -12,26 +10,16 @@
     elements.statusMessage = document.getElementById("statusMessage");
     elements.ignoredPanel = document.getElementById("ignoredPanel");
     elements.ignoredList = document.getElementById("ignoredList");
-    elements.resultsSummary = document.getElementById("resultsSummary");
+    elements.breadcrumbList = document.getElementById("breadcrumbList");
     elements.assignmentList = document.getElementById("assignmentList");
     elements.emptyState = document.getElementById("emptyState");
     elements.detailPanel = document.getElementById("detailPanel");
     elements.totalAssignments = document.getElementById("totalAssignments");
-    elements.totalSubjects = document.getElementById("totalSubjects");
-    elements.totalSemesters = document.getElementById("totalSemesters");
   }
 
   function bindEvents(handlers) {
     elements.searchInput.addEventListener("input", function handleInput(event) {
       handlers.onSearchChange(event.target.value);
-    });
-
-    elements.semesterFilter.addEventListener("change", function handleSemesterChange(event) {
-      handlers.onSemesterChange(event.target.value);
-    });
-
-    elements.subjectFilter.addEventListener("change", function handleSubjectChange(event) {
-      handlers.onSubjectChange(event.target.value);
     });
 
     elements.loadFolderButton.addEventListener("click", handlers.onLoadFolderRequest);
@@ -43,32 +31,24 @@
     });
 
     elements.assignmentList.addEventListener("click", function handleCardSelection(event) {
-      var card = event.target.closest("[data-assignment-id]");
-
-      if (!card) {
+      var folder = event.target.closest("[data-folder-name]");
+      if (folder) {
+        handlers.onFolderNavigate(folder.getAttribute("data-folder-name"));
         return;
       }
 
-      handlers.onAssignmentSelect(card.getAttribute("data-assignment-id"));
-    });
-  }
-
-  function populateSelect(selectElement, options, currentValue, allLabel) {
-    selectElement.innerHTML = "";
-
-    var defaultOption = document.createElement("option");
-    defaultOption.value = "all";
-    defaultOption.textContent = allLabel;
-    selectElement.appendChild(defaultOption);
-
-    options.forEach(function appendOption(option) {
-      var optionElement = document.createElement("option");
-      optionElement.value = option.value;
-      optionElement.textContent = option.label;
-      selectElement.appendChild(optionElement);
+      var card = event.target.closest("[data-assignment-id]");
+      if (card) {
+        handlers.onAssignmentSelect(card.getAttribute("data-assignment-id"));
+      }
     });
 
-    selectElement.value = currentValue;
+    elements.breadcrumbList.addEventListener("click", function handleBreadcrumbSelection(event) {
+      if (event.target.tagName === "BUTTON") {
+        var index = parseInt(event.target.getAttribute("data-index"), 10);
+        handlers.onBreadcrumbNavigate(index);
+      }
+    });
   }
 
   function createTag(text) {
@@ -78,15 +58,58 @@
     return tag;
   }
 
-  function renderAssignments(assignments, selectedId) {
-    elements.assignmentList.innerHTML = "";
-    elements.emptyState.hidden = assignments.length > 0;
+  function renderBreadcrumbs(currentPath) {
+    elements.breadcrumbList.innerHTML = "";
+    
+    var homeBtn = document.createElement("button");
+    homeBtn.className = "breadcrumb-link";
+    homeBtn.setAttribute("data-index", "-1");
+    homeBtn.textContent = "Home";
+    elements.breadcrumbList.appendChild(homeBtn);
 
-    assignments.forEach(function appendAssignment(assignment) {
+    currentPath.forEach(function(folderName, index) {
+      var separator = document.createElement("span");
+      separator.className = "breadcrumb-separator";
+      separator.textContent = " / ";
+      elements.breadcrumbList.appendChild(separator);
+
+      var btn = document.createElement("button");
+      btn.className = "breadcrumb-link";
+      btn.setAttribute("data-index", index);
+      btn.textContent = folderName;
+      elements.breadcrumbList.appendChild(btn);
+    });
+  }
+
+  function renderItems(folders, files, selectedId) {
+    elements.assignmentList.innerHTML = "";
+    
+    var hasItems = (folders.length + files.length) > 0;
+    elements.emptyState.style.display = hasItems ? "none" : "grid";
+
+    folders.forEach(function appendFolder(folder) {
+      var btn = document.createElement("button");
+      btn.className = "folder-card";
+      btn.setAttribute("data-folder-name", folder.name);
+
+      var icon = document.createElement("span");
+      icon.className = "folder-icon";
+      icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>';
+
+      var title = document.createElement("span");
+      title.className = "folder-title";
+      title.textContent = folder.name;
+
+      btn.appendChild(icon);
+      btn.appendChild(title);
+      elements.assignmentList.appendChild(btn);
+    });
+
+    files.forEach(function appendFile(file) {
       var card = document.createElement("a");
-      card.className = "assignment-card" + (assignment.id === selectedId ? " is-active" : "");
-      card.setAttribute("data-assignment-id", assignment.id);
-      card.href = assignment.href;
+      card.className = "assignment-card" + (file.id === selectedId ? " is-active" : "");
+      card.setAttribute("data-assignment-id", file.id);
+      card.href = file.href;
       card.target = "_blank";
       card.rel = "noreferrer";
 
@@ -94,29 +117,17 @@
       cardHeader.className = "assignment-card-header";
 
       var title = document.createElement("h3");
-      title.textContent = assignment.title;
+      title.textContent = file.title;
 
-      var extensionTag = createTag(assignment.extension);
+      var extensionTag = createTag(file.extension);
       cardHeader.appendChild(title);
       cardHeader.appendChild(extensionTag);
 
-      var description = document.createElement("p");
-      description.className = "assignment-description";
-      description.textContent = assignment.description;
-
-      var tags = document.createElement("div");
-      tags.className = "assignment-tags";
-      tags.appendChild(createTag(assignment.semesterLabel));
-      tags.appendChild(createTag(assignment.subjectLabel));
-      tags.appendChild(createTag("No. " + assignment.assignmentNumber));
-
       var filename = document.createElement("p");
       filename.className = "assignment-filename";
-      filename.textContent = assignment.filename;
+      filename.textContent = file.filename;
 
       card.appendChild(cardHeader);
-      card.appendChild(description);
-      card.appendChild(tags);
       card.appendChild(filename);
       elements.assignmentList.appendChild(card);
     });
@@ -145,14 +156,14 @@
     if (!assignment) {
       var placeholderKicker = document.createElement("p");
       placeholderKicker.className = "detail-kicker";
-      placeholderKicker.textContent = "Assignment details";
+      placeholderKicker.textContent = "File details";
 
       var placeholderTitle = document.createElement("h3");
-      placeholderTitle.textContent = "Open an assignment";
+      placeholderTitle.textContent = "Select a file";
 
       var placeholderText = document.createElement("p");
       placeholderText.className = "detail-text";
-      placeholderText.textContent = "Click an assignment card to open the file in a new tab and review its metadata here.";
+      placeholderText.textContent = "Click a file to open it in a new tab and review its metadata here.";
 
       elements.detailPanel.appendChild(placeholderKicker);
       elements.detailPanel.appendChild(placeholderTitle);
@@ -162,7 +173,7 @@
 
     var kicker = document.createElement("p");
     kicker.className = "detail-kicker";
-    kicker.textContent = "Assignment details";
+    kicker.textContent = "File details";
 
     var title = document.createElement("h3");
     title.textContent = assignment.title;
@@ -173,9 +184,9 @@
 
     var meta = document.createElement("div");
     meta.className = "detail-meta";
-    meta.appendChild(createMetaItem("Semester", assignment.semesterLabel));
-    meta.appendChild(createMetaItem("Subject", assignment.subjectLabel));
-    meta.appendChild(createMetaItem("Assignment", "No. " + assignment.assignmentNumber));
+    
+    var pathStr = assignment.pathParts.length > 1 ? assignment.pathParts.slice(0, -1).join(" / ") : "Root";
+    meta.appendChild(createMetaItem("Location", pathStr));
     meta.appendChild(createMetaItem("File type", assignment.extension));
     meta.appendChild(createMetaItem("File name", assignment.filename));
 
@@ -221,19 +232,14 @@
   }
 
   function render(state) {
-    populateSelect(elements.semesterFilter, state.semesterOptions, state.filters.semester, "All semesters");
-    populateSelect(elements.subjectFilter, state.subjectOptions, state.filters.subject, "All subjects");
-
     elements.searchInput.value = state.filters.search;
     elements.sourceLabel.textContent = state.sourceLabel;
     elements.statusMessage.textContent = state.statusMessage;
-    elements.resultsSummary.textContent = state.resultsSummary;
     elements.totalAssignments.textContent = String(state.totalAssignments);
-    elements.totalSubjects.textContent = String(state.totalSubjects);
-    elements.totalSemesters.textContent = String(state.totalSemesters);
     elements.resetSourceButton.disabled = !state.canResetToManifest;
 
-    renderAssignments(state.filteredAssignments, state.selectedAssignmentId);
+    renderBreadcrumbs(state.currentPath);
+    renderItems(state.folders, state.files, state.selectedAssignmentId);
     renderDetail(state.selectedAssignment);
     renderIgnoredFiles(state.ignoredFiles);
   }
