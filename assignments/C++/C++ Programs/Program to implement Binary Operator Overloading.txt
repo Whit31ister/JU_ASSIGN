@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    Demo(int a) {
+        x = a;
+    }
+
+    Demo operator+(Demo obj) {   // binary operator
+        Demo temp(0);
+        temp.x = x + obj.x;
+        return temp;
+    }
+
+    void display() {
+        cout << "Value = " << x;
+    }
+};
+
+int main() {
+    Demo obj1(10), obj2(20);
+    Demo obj3 = obj1 + obj2;
+    obj3.display();
+    return 0;
+}

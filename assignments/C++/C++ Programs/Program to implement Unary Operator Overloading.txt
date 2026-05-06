@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    Demo(int a) {
+        x = a;
+    }
+
+    void operator++() {   // unary operator
+        x = x + 1;
+    }
+
+    void display() {
+        cout << "Value = " << x;
+    }
+};
+
+int main() {
+    Demo obj(5);
+    ++obj;
+    obj.display();
+    return 0;
+}

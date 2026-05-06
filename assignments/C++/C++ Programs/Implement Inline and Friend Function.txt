@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+class Sample {
+    int x;
+public:
+    inline void set(int a) {
+        x = a;
+    }
+
+    friend void show(Sample s);
+};
+
+void show(Sample s) {
+    cout << "Value of x = " << s.x;
+}
+
+int main() {
+    Sample s;
+    s.set(10);
+    show(s);
+    return 0;
+}

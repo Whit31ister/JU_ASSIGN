@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+public:
+    Demo() {   // default constructor
+        cout << "Default Constructor Called";
+    }
+};
+
+int main() {
+    Demo obj;
+    return 0;
+}
+	

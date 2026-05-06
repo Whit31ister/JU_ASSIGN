@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+public:
+    void inside() {
+        cout << "This function is defined inside the class\n";
+    }
+
+    void outside();
+};
+
+void Test::outside() {
+    cout << "This function is defined outside the class";
+}
+
+int main() {
+    Test t;
+    t.inside();
+    t.outside();
+    return 0;
+}

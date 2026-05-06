@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    Demo(int a) {   // parameterized constructor
+        x = a;
+        cout << "Value of x = " << x;
+    }
+};
+
+int main() {
+    Demo obj(10);
+    return 0;
+}

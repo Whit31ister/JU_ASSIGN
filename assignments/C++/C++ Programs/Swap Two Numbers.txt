@@ -1,0 +1,38 @@
+A) Call By Value
+
+#include <iostream>
+using namespace std;
+
+void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    cout << "Inside function: " << a << " " << b << endl;
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(x, y);
+    cout << "After function call: " << x << " " << y;
+    return 0;
+}
+
+
+
+B) Call By Reference 
+
+#include <iostream>
+using namespace std;
+
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(x, y);
+    cout << "After swapping: " << x << " " << y;
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    Demo(int a) {
+        x = a;
+    }
+
+    Demo(Demo &obj) {   // copy constructor
+        x = obj.x;
+    }
+
+    void display() {
+        cout << "Value of x = " << x;
+    }
+};
+
+int main() {
+    Demo obj1(20);
+    Demo obj2 = obj1;
+    obj2.display();
+    return 0;
+}
