@@ -153,6 +153,45 @@
     refreshView();
   }
 
+  async function fetchContributors() {
+    try {
+      if (!app.config.contributors || !app.config.contributors.length) return;
+      
+      var container = document.getElementById("contributorsList");
+      if (!container) return;
+      
+      var fragment = document.createDocumentFragment();
+      
+      var promises = app.config.contributors.map(function(username) {
+        return fetch("https://api.github.com/users/" + username)
+          .then(function(res) { return res.ok ? res.json() : null; })
+          .catch(function() { return null; });
+      });
+      
+      var users = await Promise.all(promises);
+      
+      users.forEach(function(c) {
+        if (!c || c.type !== 'User') return;
+        var a = document.createElement("a");
+        a.href = c.html_url;
+        a.target = "_blank";
+        a.title = c.name || c.login;
+        
+        var img = document.createElement("img");
+        img.src = c.avatar_url;
+        img.alt = c.name || c.login;
+        img.className = "contributor-avatar";
+        img.loading = "lazy";
+        
+        a.appendChild(img);
+        fragment.appendChild(a);
+      });
+      container.appendChild(fragment);
+    } catch (e) {
+      console.warn("Could not load contributors.", e);
+    }
+  }
+
   async function initialise() {
     app.ui.cacheElements();
     app.ui.bindEvents({
@@ -179,6 +218,8 @@
         updateToggleText();
       });
     }
+
+    fetchContributors();
 
     var manifestResult = await app.catalog.loadManifest();
 

@@ -392,3 +392,36 @@
   justify-content: center;
   color: var(--muted);
 }
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-self: start;
+  min-width: 0;
+}
+
+.contributors-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contributors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.contributor-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-strong);
+  transition: transform 160ms ease, border-color 160ms ease;
+  background: var(--surface-soft);
+}
+
+.contributor-avatar:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
