@@ -9,9 +9,20 @@
     content="JU Assignments is a clean semester-wise archive for assignment files stored in the assignments folder."
   >
   <title>JU Assignments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="site-shell">
@@ -20,7 +31,10 @@
         <p class="brand">JU Assignments</p>
         <p class="site-caption">Semester-wise assignment archive</p>
       </div>
-      <p class="site-note">Built for the <code>assignments/</code> folder workflow</p>
+      <div class="header-actions">
+        <p class="site-note">Built for the <code>assignments/</code> folder workflow</p>
+        <button id="themeToggle" class="button button-secondary theme-toggle" aria-label="Toggle dark mode">Dark Mode</button>
+      </div>
     </header>
 
     <main class="page-grid">

@@ -201,6 +201,21 @@
       onAssignmentSelect: handleAssignmentSelect
     });
 
+    var themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+      function updateToggleText() {
+        var isDark = document.documentElement.classList.contains("dark");
+        themeToggle.textContent = isDark ? "Light Mode" : "Dark Mode";
+      }
+      updateToggleText();
+      themeToggle.addEventListener("click", function() {
+        document.documentElement.classList.toggle("dark");
+        var isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateToggleText();
+      });
+    }
+
     var manifestResult = await app.catalog.loadManifest();
 
     state.manifestAssignments = manifestResult.assignments.slice();

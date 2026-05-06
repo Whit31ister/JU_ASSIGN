@@ -1,8 +1,7 @@
 .card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .brand {
@@ -33,7 +32,7 @@
 .sidebar,
 .list-card,
 .detail-card {
-  padding: 1.25rem;
+  padding: 0;
 }
 
 .hero-copy,
@@ -43,10 +42,10 @@
 }
 
 .hero h1 {
-  max-width: 14ch;
-  font-size: clamp(2rem, 4.8vw, 3.75rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
+  max-width: 20ch;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .hero-text,
@@ -71,15 +70,15 @@
   padding: 0.95rem 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: rgba(255, 250, 243, 0.7);
+  background: var(--surface-strong);
 }
 
 .metric span {
   display: block;
   margin-bottom: 0.2rem;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .metric small,
@@ -139,7 +138,7 @@
 .button-primary {
   background: var(--accent);
   color: #f7fbf8;
-  box-shadow: 0 10px 18px rgba(143, 76, 39, 0.16);
+  box-shadow: 0 4px 12px var(--accent-soft);
 }
 
 .button-primary:hover,
@@ -199,26 +198,25 @@
   display: grid;
   gap: 0.6rem;
   width: 100%;
-  padding: 0.95rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface-strong);
+  padding: 0.85rem 0;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
   text-align: left;
   text-decoration: none;
-  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  transition: transform 160ms ease, opacity 160ms ease;
 }
 
 .assignment-card:hover,
 .assignment-card:focus-visible {
   outline: none;
-  transform: translateY(-1px);
-  border-color: rgba(183, 104, 58, 0.35);
-  box-shadow: 0 12px 20px rgba(86, 59, 35, 0.08);
+  transform: translateX(4px);
+  opacity: 0.8;
 }
 
 .assignment-card.is-active {
-  border-color: rgba(183, 104, 58, 0.45);
-  box-shadow: 0 12px 24px rgba(143, 76, 39, 0.1);
+  border-bottom-color: var(--accent);
 }
 
 .assignment-card-header {
