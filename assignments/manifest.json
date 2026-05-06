@@ -1,39 +1,54 @@
 {
   "files": [
     {
-      "path": "assignments/1_EM1_assignment_1-2.pdf",
-      "title": "Engineering Mathematics I Assignment 1-2",
-      "description": "Matrices, linear dependence, and eigenvalue problems."
+      "path": "assignments/Applied Physics/Assignments/1_applied-physics_assignment_3.docx",
+      "title": "1 Applied Physics Assignment 3",
+      "description": "Auto-generated file entry."
     },
     {
-      "path": "assignments/1_applied-physics_assignment_3.docx",
-      "title": "Applied Physics Assignment 3",
-      "description": "Semiconductor fundamentals, conductivity, and PN junction diode questions."
+      "path": "assignments/Applied Physics/Assignments/1_applied-physics_assignment_4.docx",
+      "title": "1 Applied Physics Assignment 4",
+      "description": "Auto-generated file entry."
     },
     {
-      "path": "assignments/1_applied-physics_assignment_4.docx",
-      "title": "Applied Physics Assignment 4",
-      "description": "Optical fiber, holography, and laser theory questions."
+      "path": "assignments/Applied Physics/Practicals/laser_experiment.pdf",
+      "title": "Laser Experiment",
+      "description": "Auto-generated file entry."
     },
     {
-      "path": "assignments/2_CPP_assignment_3.pdf",
-      "title": "C++ Assignment 3",
-      "description": "Constructors, member functions, and parameterized constructors."
+      "path": "assignments/C++/Assignments/2_CPP_assignment_3.pdf",
+      "title": "2 CPP Assignment 3",
+      "description": "Auto-generated file entry."
     },
     {
-      "path": "assignments/2_EM2_assignment_3.pdf",
-      "title": "Engineering Mathematics II Assignment 3",
-      "description": "Differential equations tutorial covering order, degree, integrating factor, and exact equations."
+      "path": "assignments/C++/Class PPTs/Lecture_5_Constructors.pptx",
+      "title": "Lecture 5 Constructors",
+      "description": "Auto-generated file entry."
     },
     {
-      "path": "assignments/2_EM2_assignment_4.pdf",
-      "title": "Engineering Mathematics II Assignment 4",
-      "description": "Differential equations practice set with Clairaut and related forms."
+      "path": "assignments/Engineering Mathematics I/Assignments/1_EM1_assignment_1-2.pdf",
+      "title": "1 EM1 Assignment 1 2",
+      "description": "Auto-generated file entry."
     },
     {
-      "path": "assignments/2_professional-skills_assignment_3.pdf",
-      "title": "Professional Skills Assignment 3 Solutions",
-      "description": "Unit III solutions on cognitive skills, problem-solving, empathy, and stress management."
+      "path": "assignments/Engineering Mathematics I/Notes/chapter1_matrices.pdf",
+      "title": "Chapter1 Matrices",
+      "description": "Auto-generated file entry."
+    },
+    {
+      "path": "assignments/Engineering Mathematics II/Assignments/2_EM2_assignment_3.pdf",
+      "title": "2 EM2 Assignment 3",
+      "description": "Auto-generated file entry."
+    },
+    {
+      "path": "assignments/Engineering Mathematics II/Assignments/2_EM2_assignment_4.pdf",
+      "title": "2 EM2 Assignment 4",
+      "description": "Auto-generated file entry."
+    },
+    {
+      "path": "assignments/Professional Skills/Assignments/2_professional-skills_assignment_3.pdf",
+      "title": "2 Professional Skills Assignment 3",
+      "description": "Auto-generated file entry."
     }
   ]
 }

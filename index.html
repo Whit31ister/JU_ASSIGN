@@ -9,9 +9,20 @@
     content="JU Assignments is a clean semester-wise archive for assignment files stored in the assignments folder."
   >
   <title>JU Assignments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="site-shell">
@@ -20,33 +31,27 @@
         <p class="brand">JU Assignments</p>
         <p class="site-caption">Semester-wise assignment archive</p>
       </div>
-      <p class="site-note">Built for the <code>assignments/</code> folder workflow</p>
+      <div class="header-actions">
+        <p class="site-note">Built for the <code>assignments/</code> folder workflow</p>
+        <button id="themeToggle" class="button button-secondary theme-toggle" aria-label="Toggle dark mode">Dark Mode</button>
+      </div>
     </header>
 
     <main class="page-grid">
       <section class="card hero">
         <div class="hero-copy">
           <p class="eyebrow">Minimal Assignment Browser</p>
-          <h1>Clean structure, clear filters, and a simple naming-based workflow.</h1>
+          <h1>Clean structure and a simple folder-based workflow.</h1>
           <p class="hero-text">
-            Keep assignment files inside <code>assignments/</code> using the format
-            <code>sem_sub_assignment_no.ext</code>. The site parses semester, subject, and assignment number
-            directly from the file name.
+            Keep your materials inside <code>assignments/</code> using categorized folders.
+            The site automatically parses your folder structure into a clean navigation interface.
           </p>
         </div>
 
         <div class="hero-metrics">
           <article class="metric">
             <span id="totalAssignments">0</span>
-            <small>Total assignments</small>
-          </article>
-          <article class="metric">
-            <span id="totalSubjects">0</span>
-            <small>Subjects</small>
-          </article>
-          <article class="metric">
-            <span id="totalSemesters">0</span>
-            <small>Semesters</small>
+            <small>Total Files</small>
           </article>
         </div>
       </section>
@@ -54,8 +59,8 @@
       <aside class="card sidebar">
         <div class="section-heading">
           <p class="eyebrow">Controls</p>
-          <h2>Browse assignments</h2>
-          <p class="section-copy">Filter the library or load a local folder while you prepare the published archive.</p>
+          <h2>Browse files</h2>
+          <p class="section-copy">Search the library or load a local folder.</p>
         </div>
 
         <div class="field">
@@ -63,19 +68,7 @@
           <input id="searchInput" type="search" placeholder="Search by title, subject, file name">
         </div>
 
-        <div class="field">
-          <label for="semesterFilter">Semester</label>
-          <select id="semesterFilter">
-            <option value="all">All semesters</option>
-          </select>
-        </div>
 
-        <div class="field">
-          <label for="subjectFilter">Subject</label>
-          <select id="subjectFilter">
-            <option value="all">All subjects</option>
-          </select>
-        </div>
 
         <div class="button-row">
           <button id="loadFolderButton" class="button button-primary" type="button">Load assignments folder</button>
@@ -90,34 +83,32 @@
         </section>
 
         <section class="guide-panel">
-          <h3>Filename rule</h3>
-          <code>sem_sub_assignment_no.ext</code>
-          <p>Example: <code>3_dbms_assignment_2.pdf</code></p>
-          <p>The semester can be numeric or text, the subject can be abbreviated, and any file extension is supported.</p>
+          <h3>Folder structure</h3>
+          <code>Subject / Category / File.ext</code>
+          <p>Example: <code>DBMS / Notes / chapter1.pdf</code></p>
+          <p>You can organize files into any folder hierarchy.</p>
         </section>
 
         <section id="ignoredPanel" class="guide-panel" hidden>
           <h3>Ignored files</h3>
-          <p>These files do not match the required naming format.</p>
+          <p>These hidden or system files were ignored.</p>
           <ul id="ignoredList" class="ignored-list"></ul>
         </section>
       </aside>
 
       <section class="content">
         <div class="content-header">
-          <div>
-            <p class="eyebrow">Library</p>
-            <h2>Assignments</h2>
+          <div id="breadcrumbList" class="breadcrumbs">
+            <button class="breadcrumb-link" data-index="-1">Home</button>
           </div>
-          <p id="resultsSummary" class="results-summary">0 assignments visible</p>
         </div>
 
         <div class="content-grid">
           <section class="card list-card">
             <div id="assignmentList" class="assignment-list" aria-live="polite"></div>
             <div id="emptyState" class="empty-state" hidden>
-              <h3>No assignments found</h3>
-              <p>Adjust the filters, load a local folder, or add files to <code>assignments/manifest.json</code>.</p>
+              <h3>No files found</h3>
+              <p>Adjust your search, load a local folder, or add files to <code>assignments/manifest.json</code>.</p>
             </div>
           </section>
 

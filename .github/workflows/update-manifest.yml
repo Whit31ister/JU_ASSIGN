@@ -1,0 +1,42 @@
+name: Update Manifest
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'assignments/**'
+      - '!assignments/manifest.json'
+
+jobs:
+  generate-manifest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to push changes back to the repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run manifest generation script
+        run: node generate-manifest.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assignments/manifest.json
+          
+          # Check if manifest.json has actually changed before trying to commit
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: auto-update manifest.json [skip ci]"
+            git push
+          else
+            echo "No changes to manifest.json detected."
+          fi
