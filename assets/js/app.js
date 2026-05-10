@@ -35,6 +35,8 @@
       state.files = state.assignments.filter(function matchesSearch(assignment) {
         return assignment.filename.toLowerCase().indexOf(searchTerm) >= 0 ||
                assignment.path.toLowerCase().indexOf(searchTerm) >= 0;
+      }).sort(function sortByTitle(a, b) {
+        return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" });
       });
       state.folders = [];
     } else {
@@ -61,14 +63,18 @@
         }
       });
 
-      state.folders = Object.keys(folderSet).sort().map(function(name) {
+      state.folders = Object.keys(folderSet).sort(function sortByName(a, b) {
+        return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+      }).map(function(name) {
         return {
           type: 'folder',
           name: name,
           path: state.currentPath.concat(name)
         };
       });
-      state.files = files;
+      state.files = files.sort(function sortByTitle(a, b) {
+        return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" });
+      });
     }
   }
 
