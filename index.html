@@ -128,7 +128,21 @@
       </section>
     </main>
   </div>
+  <div id="fileViewerModal" class="modal" hidden>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modalTitle">File Viewer</h3>
+        <button id="closeModalBtn" class="button button-secondary">Close</button>
+      </header>
+      <div id="modalBody" class="modal-body">
+        <!-- Content will be injected here -->
+      </div>
+    </div>
+  </div>
 
+  <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
+  <script src="https://unpkg.com/docx-preview/dist/docx-preview.min.js"></script>
+  
   <script defer src="assets/js/core/config.js"></script>
   <script defer src="assets/js/core/parser.js"></script>
   <script defer src="assets/js/services/catalog.js"></script>

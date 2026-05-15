@@ -15,6 +15,10 @@
     elements.emptyState = document.getElementById("emptyState");
     elements.detailPanel = document.getElementById("detailPanel");
     elements.totalAssignments = document.getElementById("totalAssignments");
+    elements.fileViewerModal = document.getElementById("fileViewerModal");
+    elements.modalTitle = document.getElementById("modalTitle");
+    elements.modalBody = document.getElementById("modalBody");
+    elements.closeModalBtn = document.getElementById("closeModalBtn");
   }
 
   function bindEvents(handlers) {
@@ -30,6 +34,13 @@
       event.target.value = "";
     });
 
+    elements.closeModalBtn.addEventListener("click", closeViewer);
+    elements.fileViewerModal.addEventListener("click", function handleModalClick(event) {
+      if (event.target === elements.fileViewerModal) {
+        closeViewer();
+      }
+    });
+
     elements.assignmentList.addEventListener("click", function handleCardSelection(event) {
       var folder = event.target.closest("[data-folder-name]");
       if (folder) {
@@ -39,6 +50,7 @@
 
       var card = event.target.closest("[data-assignment-id]");
       if (card) {
+        event.preventDefault();
         handlers.onAssignmentSelect(card.getAttribute("data-assignment-id"));
       }
     });
@@ -56,6 +68,46 @@
     tag.className = "tag";
     tag.textContent = text;
     return tag;
+  }
+
+  function closeViewer() {
+    elements.fileViewerModal.hidden = true;
+    elements.modalBody.innerHTML = "";
+  }
+
+  function openViewer(assignment) {
+    var ext = assignment.extension.toLowerCase();
+    if (ext !== "pdf" && ext !== "docx") {
+      window.open(assignment.href, "_blank");
+      return;
+    }
+
+    elements.modalTitle.textContent = assignment.title || assignment.filename;
+    elements.modalBody.innerHTML = "";
+    elements.fileViewerModal.hidden = false;
+
+    if (ext === "pdf") {
+      var iframe = document.createElement("iframe");
+      iframe.src = assignment.href;
+      elements.modalBody.appendChild(iframe);
+    } else if (ext === "docx") {
+      var loading = document.createElement("p");
+      loading.textContent = "Loading document...";
+      loading.style.padding = "2rem";
+      loading.style.textAlign = "center";
+      elements.modalBody.appendChild(loading);
+
+      fetch(assignment.href)
+        .then(function(res) { return res.arrayBuffer(); })
+        .then(function(data) {
+          elements.modalBody.innerHTML = "";
+          return docx.renderAsync(data, elements.modalBody);
+        })
+        .catch(function(err) {
+          elements.modalBody.innerHTML = '<p style="padding: 2rem; color: red; text-align: center;">Failed to load document.</p>';
+          console.error(err);
+        });
+    }
   }
 
   function renderBreadcrumbs(currentPath) {
@@ -203,6 +255,13 @@
     openLink.target = "_blank";
     openLink.rel = "noreferrer";
     openLink.textContent = "Open file";
+    openLink.addEventListener("click", function(event) {
+      var ext = assignment.extension.toLowerCase();
+      if (ext === "pdf" || ext === "docx") {
+        event.preventDefault();
+        openViewer(assignment);
+      }
+    });
 
     var downloadLink = document.createElement("a");
     downloadLink.className = "action-link secondary";
@@ -248,6 +307,8 @@
     cacheElements: cacheElements,
     bindEvents: bindEvents,
     render: render,
+    openViewer: openViewer,
+    closeViewer: closeViewer,
     openFolderPicker: function openFolderPicker() {
       elements.folderInput.click();
     }

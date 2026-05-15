@@ -140,6 +140,13 @@
     state.selectedAssignmentId = assignmentId;
     syncSelection();
     app.ui.render(state);
+
+    if (state.selectedAssignment) {
+      var ext = state.selectedAssignment.extension.toLowerCase();
+      if (ext === "pdf" || ext === "docx") {
+        app.ui.openViewer(state.selectedAssignment);
+      }
+    }
   }
 
   function handleFolderSelected(fileList) {
