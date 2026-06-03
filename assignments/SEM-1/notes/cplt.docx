@@ -1,0 +1,89 @@
+These notes summarise the theoretical topics covered in your course assignments and accompanying material, focusing on definitions, comparisons, and concepts.
+
+Unit 1: Computer Fundamentals
+    • Foundational Concepts: 
+        ◦ Charles Babbage is historically known as the father of the computer due to his seminal contributions. 
+        ◦ Computer Software is composed of two main categories: System Software (which operates hardware and provides a platform for applications, e.g., operating systems, compilers) and Application Software (designed to solve specific user problems, e.g., spreadsheets, games). 
+    • System Components & Control: 
+        ◦ The Control Unit (CU) regulates the workings of the computer, typically explained using a diagram. 
+        ◦ BIOS (Basic Input/Output System) is firmware built into the computer, and its key role is to load and start the operating system. It runs tests called POST (Power On Self Test) when the computer starts to ensure devices are working correctly. 
+    • Memory: 
+        ◦ The structure of memory hierarchy explains how different levels of memory interact. 
+        ◦ Primary Memory and Secondary Memory are distinct memory categories, supported by examples. 
+        ◦ RAM is categorized into Dynamic RAM (DRAM) and Static RAM (SRAM). 
+    • Data Representation: 
+        ◦ Binary Subtraction uses the concept of 2's Complement. 
+        ◦ ASCII code has importance explained with examples. 
+        ◦ Data can be represented using fixed-point and floating-point representations, which differ significantly. Floating-point format involves the role of bias. 
+        ◦ Cyclic Code is a specific type of data code. 
+    • Generations of Languages: 
+        ◦ Programming languages evolved through generations: Machine Language (1st Gen, using 1s and 0s), Assembly Language (2nd Gen, using symbolic notation), High-Level Languages (3GL), Very High-Level Languages (4GL), and Fifth Generation Programming Language (5GL) (problem-solving via constraints). 
+
+Unit 2: Programming Fundamentals and Algorithm
+    • Algorithms: 
+        ◦ An algorithm is a formally defined procedure for a calculation, providing a blueprint to write a program in a finite number of steps. 
+        ◦ Algorithms exhibit three key features: Sequence, Decision, and Repetition. 
+        ◦ You should be able to state the characteristics, advantages, and disadvantages of an algorithm. 
+    • Program Planning: 
+        ◦ It is advisable to plan the logic of a program before coding it. 
+        ◦ You should know common problem solving techniques. 
+        ◦ Stepwise Refinement is a technique used in program design. 
+    • Flowcharts and Pseudocode: 
+        ◦ Flowcharts are explained in detail, including the elements (symbols) used within them. Flowcharting helps illustrate how programming logic works. 
+        ◦ Pseudocode is also a technique for illustrating program logic (contrasted with flowcharts). 
+    • Language Tools: 
+        ◦ A Compiler transforms source code written in a programming language (source language) into machine language (target language). 
+        ◦ An Interpreter executes instructions written in a high-level language, translating instructions into an intermediate form line by line, unlike a compiler which compiles the entire code at once. 
+    • Maintenance: 
+        ◦ Documentation is important in program development. 
+        ◦ Testing and Debugging are distinct activities. 
+
+Unit 3 & 4: Basic C, Decision Control, and Looping
+    • C Program Structure: 
+        ◦ The main() function serves as the starting point for execution in a C program. 
+        ◦ The #include directive is a preprocessor command used to include information, typically from standard library header files, in the program for compilation. 
+    • Data Types and Tokens: 
+        ◦ The difference between the int and float data types is based on whether they store whole numbers or numbers with fractional parts, respectively, and each is appropriate for different situations. 
+        ◦ A Token is a fundamental unit of a C program. 
+        ◦ The const keyword is used to designate an identifier whose value does not change. 
+    • Operators and Expressions: 
+        ◦ The assignment operator (=) is different from the equality comparison operator (==). 
+        ◦ Arithmetic expressions involve variables and constants combined with arithmetic operators. 
+        ◦ The Ternary Operator (?:) is a form of conditional operator used in expressions. 
+        ◦ Logical operators are used to combine or modify logical expressions. 
+        ◦ The concept of operator precedence determines the order in which operators in an expression are evaluated. 
+    • Control Flow (Decision and Iteration): 
+        ◦ Decision control structures serve the purpose of altering the sequential flow of instruction execution based on conditions. 
+        ◦ Basic types of decision control statements include if, if-else, and switch. 
+        ◦ The switch statement is a multi-way decision structure used to test a variable against several integer values. 
+        ◦ Loops (Iterative statements) repeat the execution of a list of statements. Types include the while loop, do-while loop, and for loop. 
+        ◦ The difference between the while and do-while loops lies in when the condition is checked (top-checking vs. bottom-checking). 
+        ◦ Alteration (selection/branching) and Iteration (looping) are core concepts of conditional processing. 
+
+Unit 5: Advanced C (Functions, Pointers, Structures, Arrays, Strings, Files)
+    • Functions: 
+        ◦ Function Declaration (or prototype) identifies the function's name, arguments, and return type, enabling the compiler to check subsequent calls. 
+        ◦ Function Definition includes the header (signature) and the function body containing the executable code. 
+        ◦ Inbuilt (Library) Functions are pre-written and pre-tested functions provided by the C compiler, unlike User-defined Functions written by the programmer. 
+        ◦ Formal parameters are the parameters defined in the function header, while actual parameters (or arguments) are the values or expressions passed during the function call. 
+        ◦ Calling a function transfers control from the calling function to the called function. 
+    • Parameter Passing Techniques: 
+        ◦ Call by Reference (Call by Address) technique involves passing the addresses of variables to the function, allowing the called function to modify the original variables in the calling program. 
+        ◦ Call by Value involves passing copies of the values, so modifications do not affect the original variables. 
+        ◦ Recursive Functions call themselves to solve smaller versions of a task until a base case is reached. 
+    • Pointers: 
+        ◦ A pointer is a variable that stores the memory location (address) of another variable. 
+        ◦ The Reference operator (&) retrieves the address of a variable. 
+        ◦ The Dereference operator (*) retrieves the value stored at the address pointed to by the pointer. 
+        ◦ Pointers are advantageous for enabling functions to return multiple values, accessing array elements efficiently, and dynamic memory allocation. 
+        ◦ EOF (End-of-File) is a constant (typically -1) used in file processing. 
+    • Arrays and Strings: 
+        ◦ An Array is a collection of similar data elements stored in consecutive memory locations. 
+        ◦ Array Declaration requires specifying the data type, name, and size. 
+        ◦ One-dimensional Arrays store data linearly, while Multi-dimensional Arrays are useful for storing data in tabular form (matrices). 
+        ◦ Arrays of pointers in C refers to an array where each element is a pointer. 
+        ◦ String Manipulation Functions in C are used for operations like concatenation, comparison, copying, and calculating length (e.g., strcat, strcmp, strcpy, strlen). 
+    • Structures and Unions: 
+        ◦ A Structure is a user-defined data type that groups related information (members) of different data types under a single name. 
+        ◦ A Union is similar to a structure, but all members share the same memory location, meaning only one member can store a value at any given time. 
+
