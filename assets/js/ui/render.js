@@ -77,7 +77,7 @@
 
   function openViewer(assignment) {
     var ext = assignment.extension.toLowerCase();
-    if (ext !== "pdf" && ext !== "docx") {
+    if (ext !== "pdf" && ext !== "docx" && ext !== "md") {
       window.open(assignment.href, "_blank");
       return;
     }
@@ -105,6 +105,23 @@
         })
         .catch(function(err) {
           elements.modalBody.innerHTML = '<p style="padding: 2rem; color: red; text-align: center;">Failed to load document.</p>';
+          console.error(err);
+        });
+    } else if (ext === "md") {
+      var wrapper = document.createElement("div");
+      wrapper.className = "markdown-content";
+      var loadingMd = document.createElement("p");
+      loadingMd.textContent = "Loading markdown...";
+      wrapper.appendChild(loadingMd);
+      elements.modalBody.appendChild(wrapper);
+
+      fetch(assignment.href)
+        .then(function(res) { return res.text(); })
+        .then(function(text) {
+          wrapper.innerHTML = marked.parse(text);
+        })
+        .catch(function(err) {
+          wrapper.innerHTML = '<p style="color: red;">Failed to load markdown document.</p>';
           console.error(err);
         });
     }
@@ -257,7 +274,7 @@
     openLink.textContent = "Open file";
     openLink.addEventListener("click", function(event) {
       var ext = assignment.extension.toLowerCase();
-      if (ext === "pdf" || ext === "docx") {
+      if (ext === "pdf" || ext === "docx" || ext === "md") {
         event.preventDefault();
         openViewer(assignment);
       }

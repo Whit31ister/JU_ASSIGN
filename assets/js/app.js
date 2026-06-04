@@ -143,7 +143,7 @@
 
     if (state.selectedAssignment) {
       var ext = state.selectedAssignment.extension.toLowerCase();
-      if (ext === "pdf" || ext === "docx") {
+      if (ext === "pdf" || ext === "docx" || ext === "md") {
         app.ui.openViewer(state.selectedAssignment);
       }
     }
