@@ -19,6 +19,8 @@
     elements.modalTitle = document.getElementById("modalTitle");
     elements.modalBody = document.getElementById("modalBody");
     elements.closeModalBtn = document.getElementById("closeModalBtn");
+    elements.zoomOutBtn = document.getElementById("zoomOutBtn");
+    elements.zoomInBtn = document.getElementById("zoomInBtn");
   }
 
   function bindEvents(handlers) {
@@ -33,6 +35,13 @@
       handlers.onFolderSelected(event.target.files);
       event.target.value = "";
     });
+
+    if (elements.zoomInBtn) {
+      elements.zoomInBtn.addEventListener("click", function() { setZoom(currentZoom + 0.1); });
+    }
+    if (elements.zoomOutBtn) {
+      elements.zoomOutBtn.addEventListener("click", function() { setZoom(currentZoom - 0.1); });
+    }
 
     elements.closeModalBtn.addEventListener("click", closeViewer);
     elements.fileViewerModal.addEventListener("click", function handleModalClick(event) {
@@ -70,6 +79,16 @@
     return tag;
   }
 
+  var currentZoom = 1;
+
+  function setZoom(level) {
+    currentZoom = Math.max(0.5, Math.min(3, level));
+    var wrapper = elements.modalBody.firstElementChild;
+    if (wrapper && wrapper.tagName !== "IFRAME") {
+      wrapper.style.zoom = currentZoom;
+    }
+  }
+
   function closeViewer() {
     elements.fileViewerModal.hidden = true;
     elements.modalBody.innerHTML = "";
@@ -82,6 +101,7 @@
       return;
     }
 
+    currentZoom = 1;
     elements.modalTitle.textContent = assignment.title || assignment.filename;
     elements.modalBody.innerHTML = "";
     elements.fileViewerModal.hidden = false;

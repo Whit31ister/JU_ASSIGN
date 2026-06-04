@@ -132,7 +132,11 @@
     <div class="modal-content">
       <header class="modal-header">
         <h3 id="modalTitle">File Viewer</h3>
-        <button id="closeModalBtn" class="button button-secondary">Close</button>
+        <div class="viewer-controls">
+          <button id="zoomOutBtn" class="icon-button" aria-label="Zoom Out" title="Zoom Out">−</button>
+          <button id="zoomInBtn" class="icon-button" aria-label="Zoom In" title="Zoom In">+</button>
+          <button id="closeModalBtn" class="icon-button close-icon" aria-label="Close" title="Close">×</button>
+        </div>
       </header>
       <div id="modalBody" class="modal-body">
         <!-- Content will be injected here -->

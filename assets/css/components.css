@@ -478,7 +478,8 @@
   flex: 1;
   overflow: auto;
   position: relative;
-  background: #fdfdfd; /* Always light background for documents to ensure readability */
+  background: var(--bg);
+  color: var(--text);
 }
 
 .modal-body iframe {
@@ -502,7 +503,7 @@
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
-  color: #1a1a1a;
+  color: var(--text);
   line-height: 1.6;
   font-size: 1.05rem;
 }
@@ -511,7 +512,7 @@
 .markdown-content h2,
 .markdown-content h3,
 .markdown-content h4 {
-  color: #000;
+  color: var(--text);
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   line-height: 1.25;
@@ -570,6 +571,43 @@
 .markdown-content img {
   max-width: 100%;
   box-sizing: content-box;
+}
+
+.viewer-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  background: var(--surface-soft);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.icon-button.close-icon {
+  background: var(--surface-strong);
+  font-size: 1.4rem;
+}
+.icon-button.close-icon:hover {
+  background: var(--line);
 }
 
 @media (max-width: 640px) {
