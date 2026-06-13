@@ -573,6 +573,34 @@
   box-sizing: content-box;
 }
 
+.markdown-content table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-content table th,
+.markdown-content table td {
+  padding: 6px 13px;
+  border: 1px solid var(--line);
+}
+
+.markdown-content table tr {
+  background-color: transparent;
+  border-top: 1px solid var(--line);
+}
+
+.markdown-content table tr:nth-child(2n) {
+  background-color: var(--surface-soft);
+}
+
+.markdown-content table th {
+  font-weight: 600;
+  background-color: var(--surface-strong);
+}
+
 .viewer-controls {
   display: flex;
   gap: 0.5rem;
