@@ -147,11 +147,20 @@
   <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
   <script src="https://unpkg.com/docx-preview/dist/docx-preview.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({ 
+        startOnLoad: false, 
+        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default' 
+      });
+    }
+  </script>
   
   <script defer src="assets/js/core/config.js"></script>
   <script defer src="assets/js/core/parser.js"></script>
   <script defer src="assets/js/services/catalog.js"></script>
-  <script defer src="assets/js/ui/render.js"></script>
+  <script defer src="assets/js/ui/render.js?v=2"></script>
   <script defer src="assets/js/app.js"></script>
 </body>
 </html>

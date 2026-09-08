@@ -139,6 +139,21 @@
         .then(function(res) { return res.text(); })
         .then(function(text) {
           wrapper.innerHTML = marked.parse(text);
+          var mermaidCodes = wrapper.querySelectorAll('.language-mermaid');
+          if (mermaidCodes.length > 0) {
+            mermaidCodes.forEach(function(el) {
+              var pre = el.parentElement;
+              if (pre && pre.tagName.toLowerCase() === 'pre') {
+                var div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = el.textContent;
+                pre.parentNode.replaceChild(div, pre);
+              }
+            });
+            if (window.mermaid) {
+              mermaid.run({ nodes: wrapper.querySelectorAll('.mermaid') }).catch(console.error);
+            }
+          }
         })
         .catch(function(err) {
           wrapper.innerHTML = '<p style="color: red;">Failed to load markdown document.</p>';
