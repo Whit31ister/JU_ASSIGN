@@ -141,20 +141,17 @@
           wrapper.innerHTML = marked.parse(text);
           var mermaidCodes = wrapper.querySelectorAll('.language-mermaid');
           if (mermaidCodes.length > 0) {
+            var currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
             mermaidCodes.forEach(function(el) {
               var pre = el.parentElement;
               if (pre && pre.tagName.toLowerCase() === 'pre') {
                 var div = document.createElement('div');
                 div.className = 'mermaid';
-                div.textContent = el.textContent;
+                div.textContent = "%%{init: {'theme': '" + currentTheme + "'}}%%\n" + el.textContent;
                 pre.parentNode.replaceChild(div, pre);
               }
             });
             if (window.mermaid) {
-              mermaid.initialize({
-                startOnLoad: false,
-                theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default'
-              });
               mermaid.run({ nodes: wrapper.querySelectorAll('.mermaid') }).catch(console.error);
             }
           }
