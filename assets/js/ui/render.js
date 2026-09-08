@@ -151,6 +151,10 @@
               }
             });
             if (window.mermaid) {
+              mermaid.initialize({
+                startOnLoad: false,
+                theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+              });
               mermaid.run({ nodes: wrapper.querySelectorAll('.mermaid') }).catch(console.error);
             }
           }
