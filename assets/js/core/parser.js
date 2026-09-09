@@ -9,15 +9,6 @@
     return null;
   }
 
-  function formatFileSize(bytes) {
-    if (!bytes) return "";
-    var sizes = ["B", "KB", "MB", "GB"];
-    var index = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), sizes.length - 1);
-    var sizeValue = bytes / Math.pow(1024, index);
-    var precision = sizeValue >= 10 || index === 0 ? 0 : 1;
-    return sizeValue.toFixed(precision) + " " + sizes[index];
-  }
-
   function titleiseToken(token) {
     return token
       .split(/[-_]+/)
@@ -35,12 +26,10 @@
   function createRecord(baseEntry, href) {
     var fullPath = baseEntry.path.replace(/\\/g, '/');
     
-    // Strip leading assignments/ or other root folders when loading local folder
     if (fullPath.startsWith("assignments/")) {
       fullPath = fullPath.substring("assignments/".length);
     }
     
-    // Ignore manifest itself
     if (fullPath === "manifest.json" || fullPath.endsWith("/manifest.json")) {
       return null;
     }
@@ -50,7 +39,6 @@
 
     var filename = pathParts[pathParts.length - 1];
     
-    // Check if it is a hidden file
     if (filename.startsWith(".")) {
       return null;
     }
@@ -95,42 +83,6 @@
     };
   }
 
-  function parseLocalFiles(fileList) {
-    var assignments = [];
-    var ignored = [];
-    var objectUrls = [];
-
-    Array.from(fileList || []).forEach(function parseFile(file) {
-      var path = file.webkitRelativePath || file.name;
-      var href = URL.createObjectURL(file);
-      var record = createRecord(
-        {
-          path: path,
-          title: "",
-          description: "",
-          sizeLabel: formatFileSize(file.size),
-          sourceType: "local"
-        },
-        href
-      );
-
-      if (!record) {
-        ignored.push(path);
-        URL.revokeObjectURL(href);
-        return;
-      }
-
-      assignments.push(record);
-      objectUrls.push(href);
-    });
-
-    return {
-      assignments: sortAssignments(assignments),
-      ignored: ignored.sort(),
-      objectUrls: objectUrls
-    };
-  }
-
   function sortAssignments(assignments) {
     return assignments.slice().sort(function sortByPath(left, right) {
       return left.path.localeCompare(right.path, undefined, { sensitivity: "base" });
@@ -138,7 +90,6 @@
   }
 
   app.parser = {
-    parseManifestEntries: parseManifestEntries,
-    parseLocalFiles: parseLocalFiles
+    parseManifestEntries: parseManifestEntries
   };
 })(window.JUAssignmentsApp);

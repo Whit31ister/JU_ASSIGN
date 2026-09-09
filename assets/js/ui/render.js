@@ -71,13 +71,6 @@
 
   function cacheElements() {
     elements.searchInput = document.getElementById("searchInput");
-    elements.loadFolderButton = document.getElementById("loadFolderButton");
-    elements.resetSourceButton = document.getElementById("resetSourceButton");
-    elements.folderInput = document.getElementById("folderInput");
-    elements.sourceLabel = document.getElementById("sourceLabel");
-    elements.statusMessage = document.getElementById("statusMessage");
-    elements.ignoredPanel = document.getElementById("ignoredPanel");
-    elements.ignoredList = document.getElementById("ignoredList");
     elements.breadcrumbList = document.getElementById("breadcrumbList");
     elements.assignmentList = document.getElementById("assignmentList");
     elements.emptyState = document.getElementById("emptyState");
@@ -94,14 +87,6 @@
   function bindEvents(handlers) {
     elements.searchInput.addEventListener("input", function handleInput(event) {
       handlers.onSearchChange(event.target.value);
-    });
-
-    elements.loadFolderButton.addEventListener("click", handlers.onLoadFolderRequest);
-    elements.resetSourceButton.addEventListener("click", handlers.onResetSource);
-
-    elements.folderInput.addEventListener("change", function handleFolderChange(event) {
-      handlers.onFolderSelected(event.target.files);
-      event.target.value = "";
     });
 
     if (elements.zoomInBtn) {
@@ -338,7 +323,7 @@
 
       var placeholderText = document.createElement("p");
       placeholderText.className = "detail-text";
-      placeholderText.textContent = "Click a file to open it in a new tab and review its metadata here.";
+      placeholderText.textContent = "Click a file to view its metadata here.";
 
       elements.detailPanel.appendChild(placeholderKicker);
       elements.detailPanel.appendChild(placeholderTitle);
@@ -402,28 +387,13 @@
     elements.detailPanel.appendChild(actions);
   }
 
-  function renderIgnoredFiles(ignoredFiles) {
-    elements.ignoredList.innerHTML = "";
-    elements.ignoredPanel.hidden = ignoredFiles.length === 0;
-
-    ignoredFiles.forEach(function appendIgnoredFile(fileName) {
-      var item = document.createElement("li");
-      item.textContent = fileName;
-      elements.ignoredList.appendChild(item);
-    });
-  }
-
   function render(state) {
     elements.searchInput.value = state.filters.search;
-    elements.sourceLabel.textContent = state.sourceLabel;
-    elements.statusMessage.textContent = state.statusMessage;
     elements.totalAssignments.textContent = String(state.totalAssignments);
-    elements.resetSourceButton.disabled = !state.canResetToManifest;
 
     renderBreadcrumbs(state.currentPath);
     renderItems(state.folders, state.files, state.selectedAssignmentId);
     renderDetail(state.selectedAssignment);
-    renderIgnoredFiles(state.ignoredFiles);
   }
 
   app.ui = {
@@ -431,9 +401,6 @@
     bindEvents: bindEvents,
     render: render,
     openViewer: openViewer,
-    closeViewer: closeViewer,
-    openFolderPicker: function openFolderPicker() {
-      elements.folderInput.click();
-    }
+    closeViewer: closeViewer
   };
 })(window.JUAssignmentsApp);

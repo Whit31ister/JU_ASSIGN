@@ -1,88 +1,60 @@
+/* ─── Cards ─── */
 .card {
   border: none;
   background: transparent;
   box-shadow: none;
 }
 
+/* ─── Header ─── */
 .brand {
   font-size: 1.22rem;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
-.site-caption,
-.site-note {
+.site-caption {
   color: var(--muted);
   line-height: 1.5;
 }
 
-.eyebrow {
-  width: fit-content;
-  padding: 0.35rem 0.65rem;
+.file-count-badge {
+  padding: 0.35rem 0.75rem;
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent-strong);
-  font-size: 0.74rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
-.hero,
-.sidebar,
+.theme-toggle {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  background: var(--surface-soft);
+}
+
+/* ─── Content Layout ─── */
 .list-card,
 .detail-card {
   padding: 0;
 }
 
-.hero-copy,
-.section-heading {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.hero h1 {
-  max-width: 20ch;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.hero-text,
-.section-copy,
-.status-message,
-.guide-panel p,
 .detail-text,
-.assignment-description,
 .assignment-filename,
-.results-summary,
 .empty-state p {
   color: var(--muted);
   line-height: 1.65;
 }
 
-.hero-metrics {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.metric {
-  padding: 0.95rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface-strong);
-}
-
-.metric span {
-  display: block;
-  margin-bottom: 0.2rem;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.metric small,
-.status-label,
 .detail-kicker,
 .meta-label {
   color: var(--muted);
@@ -92,98 +64,12 @@
   text-transform: uppercase;
 }
 
-.sidebar {
-  display: grid;
-  gap: 0.9rem;
-}
-
-.field {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.field label,
-.content-header h2,
-.section-heading h2,
 .detail-card h3,
 .empty-state h3 {
   font-weight: 700;
 }
 
-.button-row {
-  display: grid;
-  gap: 0.65rem;
-}
-
-.button {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
-}
-
-.button:hover,
-.button:focus-visible {
-  transform: translateY(-1px);
-}
-
-.button:disabled {
-  transform: none;
-  cursor: not-allowed;
-  opacity: 0.6;
-  box-shadow: none;
-}
-
-.button-primary {
-  background: var(--accent);
-  color: #f7fbf8;
-  box-shadow: 0 4px 12px var(--accent-soft);
-}
-
-.button-primary:hover,
-.button-primary:focus-visible {
-  background: var(--accent-strong);
-  outline: none;
-}
-
-.button-secondary {
-  border: 1px solid var(--line);
-  background: var(--surface-strong);
-  color: var(--text);
-}
-
-.status-panel,
-.guide-panel,
-.empty-state {
-  display: grid;
-  gap: 0.55rem;
-  padding: 0.95rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface-strong);
-}
-
-.ignored-list {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.ignored-list li {
-  padding: 0.65rem 0.75rem;
-  border-radius: var(--radius-sm);
-  background: var(--surface-soft);
-  color: var(--text);
-  font-size: 0.92rem;
-}
-
-.content-header {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
+/* ─── Assignment List ─── */
 .list-card {
   min-height: 440px;
   min-width: 0;
@@ -232,13 +118,6 @@
   line-height: 1.3;
 }
 
-.assignment-tags,
-.detail-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
 .tag {
   padding: 0.32rem 0.58rem;
   border-radius: 999px;
@@ -252,12 +131,20 @@
   font-size: 0.92rem;
 }
 
+/* ─── Empty State ─── */
 .empty-state {
+  display: grid;
+  gap: 0.55rem;
   min-height: 220px;
   place-content: center;
   text-align: center;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-strong);
 }
 
+/* ─── Detail Panel ─── */
 .detail-card {
   display: grid;
   gap: 0.9rem;
@@ -309,6 +196,11 @@
   text-decoration: none;
   font-weight: 700;
   line-height: 1.2;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.action-link:hover {
+  transform: translateY(-1px);
 }
 
 .action-link.primary {
@@ -323,21 +215,7 @@
   color: var(--text);
 }
 
-@media (max-width: 720px) {
-  .content-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .assignment-card-header {
-    flex-direction: column;
-  }
-
-  .detail-actions {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ─── Breadcrumbs ─── */
 .breadcrumbs {
   display: flex;
   flex-wrap: wrap;
@@ -364,6 +242,7 @@
   font-weight: 700;
 }
 
+/* ─── Folder Cards ─── */
 .folder-card {
   display: flex;
   align-items: center;
@@ -393,6 +272,7 @@
   color: var(--muted);
 }
 
+/* ─── Right Column ─── */
 .right-column {
   display: flex;
   flex-direction: column;
@@ -401,6 +281,7 @@
   min-width: 0;
 }
 
+/* ─── Contributors ─── */
 .contributors-card {
   display: grid;
   gap: 0.9rem;
@@ -426,7 +307,7 @@
   border-color: var(--accent);
 }
 
-/* Modal Viewer Styles */
+/* ─── Modal Viewer ─── */
 .modal {
   position: fixed;
   inset: 0;
@@ -499,6 +380,7 @@
   margin-bottom: 0 !important;
 }
 
+/* ─── Markdown Content ─── */
 .markdown-content {
   padding: 2rem;
   max-width: 800px;
@@ -601,6 +483,7 @@
   background-color: var(--surface-strong);
 }
 
+/* ─── Viewer Controls ─── */
 .viewer-controls {
   display: flex;
   gap: 0.5rem;
@@ -636,6 +519,22 @@
 }
 .icon-button.close-icon:hover {
   background: var(--line);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 720px) {
+  .content-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .assignment-card-header {
+    flex-direction: column;
+  }
+
+  .detail-actions {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
