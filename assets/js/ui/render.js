@@ -1,6 +1,74 @@
 (function registerUI(app) {
   var elements = {};
 
+  function processMarkdownWithMath(text) {
+    var mathStore = [];
+
+    function storeMath(expr, displayMode) {
+      var id = mathStore.length;
+      mathStore.push({ expr: expr, displayMode: displayMode });
+      return '\x00MATH' + id + '\x00';
+    }
+
+    // 1. Protect fenced code blocks (``` ... ```)
+    var codeStore = [];
+    text = text.replace(/```[\s\S]*?```/g, function(match) {
+      var id = codeStore.length;
+      codeStore.push(match);
+      return '\x00CODE' + id + '\x00';
+    });
+
+    // 2. Protect inline code (` ... `)
+    text = text.replace(/`[^`]+`/g, function(match) {
+      var id = codeStore.length;
+      codeStore.push(match);
+      return '\x00CODE' + id + '\x00';
+    });
+
+    // 3. Extract display math: $$ ... $$ (multiline)
+    text = text.replace(/\$\$([\s\S]*?)\$\$/g, function(m, p1) {
+      return storeMath(p1.trim(), true);
+    });
+
+    // 4. Extract display math: \[ ... \]
+    text = text.replace(/\\\[([\s\S]*?)\\\]/g, function(m, p1) {
+      return storeMath(p1.trim(), true);
+    });
+
+    // 5. Extract inline math: \( ... \)
+    text = text.replace(/\\\((.+?)\\\)/g, function(m, p1) {
+      return storeMath(p1.trim(), false);
+    });
+
+    // 6. Extract inline math: $ ... $ (single dollar, content must not start/end with space)
+    text = text.replace(/\$([^\$\s](?:[^\$]*?[^\$\s])?)\$/g, function(m, p1) {
+      return storeMath(p1.trim(), false);
+    });
+
+    // 7. Restore code blocks before markdown parsing
+    text = text.replace(/\x00CODE(\d+)\x00/g, function(m, id) {
+      return codeStore[parseInt(id)];
+    });
+
+    // 8. Parse markdown
+    var html = marked.parse(text);
+
+    // 9. Replace math placeholders with KaTeX-rendered HTML
+    html = html.replace(/\x00MATH(\d+)\x00/g, function(m, id) {
+      var item = mathStore[parseInt(id)];
+      try {
+        return katex.renderToString(item.expr, {
+          displayMode: item.displayMode,
+          throwOnError: false
+        });
+      } catch (e) {
+        return '<code>' + item.expr + '</code>';
+      }
+    });
+
+    return html;
+  }
+
   function cacheElements() {
     elements.searchInput = document.getElementById("searchInput");
     elements.loadFolderButton = document.getElementById("loadFolderButton");
@@ -138,7 +206,9 @@
       fetch(assignment.href)
         .then(function(res) { return res.text(); })
         .then(function(text) {
-          wrapper.innerHTML = marked.parse(text);
+          wrapper.innerHTML = processMarkdownWithMath(text);
+
+          // Mermaid rendering
           var mermaidCodes = wrapper.querySelectorAll('.language-mermaid');
           if (mermaidCodes.length > 0) {
             var currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
