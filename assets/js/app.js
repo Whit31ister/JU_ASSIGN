@@ -167,13 +167,50 @@
       onBreadcrumbNavigate: handleBreadcrumbNavigate
     });
 
+    var headerSearch = document.getElementById("headerSearch");
+    var searchToggleBtn = document.getElementById("searchToggleBtn");
+    var searchCloseBtn = document.getElementById("searchCloseBtn");
     var searchInput = document.getElementById("searchInput");
     var clearSearchBtn = document.getElementById("clearSearchBtn");
 
-    if (searchInput && clearSearchBtn) {
-      function syncClearButton() {
+    function syncClearButton() {
+      if (clearSearchBtn && searchInput) {
         clearSearchBtn.hidden = !searchInput.value;
       }
+    }
+
+    function openSearch() {
+      if (!headerSearch) return;
+      headerSearch.classList.add("is-open");
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
+      }
+    }
+
+    function closeSearch() {
+      if (!headerSearch) return;
+      headerSearch.classList.remove("is-open");
+      if (searchInput && searchInput.value) {
+        searchInput.value = "";
+        syncClearButton();
+        handleSearchChange("");
+      }
+    }
+
+    if (searchToggleBtn) {
+      searchToggleBtn.addEventListener("click", function() {
+        openSearch();
+      });
+    }
+
+    if (searchCloseBtn) {
+      searchCloseBtn.addEventListener("click", function() {
+        closeSearch();
+      });
+    }
+
+    if (searchInput && clearSearchBtn) {
       searchInput.addEventListener("input", syncClearButton);
       clearSearchBtn.addEventListener("click", function() {
         searchInput.value = "";
@@ -183,23 +220,28 @@
       });
     }
 
-    // Keyboard shortcut to focus search: press '/' or 'Ctrl+K' / 'Cmd+K'
+    // Click outside to collapse search if empty
+    document.addEventListener("click", function(event) {
+      if (headerSearch && headerSearch.classList.contains("is-open")) {
+        if (!headerSearch.contains(event.target)) {
+          if (searchInput && !searchInput.value.trim()) {
+            closeSearch();
+          }
+        }
+      }
+    });
+
+    // Keyboard shortcut: press '/' or 'Ctrl+K' / 'Cmd+K' to open search
     window.addEventListener("keydown", function(event) {
       if (event.key === "/" && document.activeElement !== searchInput && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement && document.activeElement.tagName)) {
         event.preventDefault();
-        if (searchInput) {
-          searchInput.focus();
-          searchInput.select();
-        }
+        openSearch();
       } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        if (searchInput) {
-          searchInput.focus();
-          searchInput.select();
-        }
-      } else if (event.key === "Escape" && document.activeElement === searchInput) {
-        if (searchInput) {
-          searchInput.blur();
+        openSearch();
+      } else if (event.key === "Escape") {
+        if (headerSearch && headerSearch.classList.contains("is-open")) {
+          closeSearch();
         }
       }
     });
