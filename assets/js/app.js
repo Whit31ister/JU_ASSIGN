@@ -167,11 +167,53 @@
       onBreadcrumbNavigate: handleBreadcrumbNavigate
     });
 
+    var searchInput = document.getElementById("searchInput");
+    var clearSearchBtn = document.getElementById("clearSearchBtn");
+
+    if (searchInput && clearSearchBtn) {
+      function syncClearButton() {
+        clearSearchBtn.hidden = !searchInput.value;
+      }
+      searchInput.addEventListener("input", syncClearButton);
+      clearSearchBtn.addEventListener("click", function() {
+        searchInput.value = "";
+        syncClearButton();
+        searchInput.focus();
+        handleSearchChange("");
+      });
+    }
+
+    // Keyboard shortcut to focus search: press '/' or 'Ctrl+K' / 'Cmd+K'
+    window.addEventListener("keydown", function(event) {
+      if (event.key === "/" && document.activeElement !== searchInput && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement && document.activeElement.tagName)) {
+        event.preventDefault();
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      } else if (event.key === "Escape" && document.activeElement === searchInput) {
+        if (searchInput) {
+          searchInput.blur();
+        }
+      }
+    });
+
     var themeToggle = document.getElementById("themeToggle");
     if (themeToggle) {
       function updateToggleText() {
         var isDark = document.documentElement.classList.contains("dark");
-        themeToggle.textContent = isDark ? "Light Mode" : "Dark Mode";
+        var label = themeToggle.querySelector(".theme-label");
+        if (label) {
+          label.textContent = isDark ? "Light Mode" : "Dark Mode";
+        } else {
+          themeToggle.textContent = isDark ? "Light Mode" : "Dark Mode";
+        }
       }
       updateToggleText();
       themeToggle.addEventListener("click", function() {
