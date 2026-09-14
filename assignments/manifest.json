@@ -1,6 +1,31 @@
 {
   "files": [
     {
+      "path": "assignments/SEM-1/Physics/Assignment 1 (DPH001B).pdf",
+      "title": "Assignment 1 (DPH001B)",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/Physics/Assignment 2 (DPH001B).pdf",
+      "title": "Assignment 2 (DPH001B)",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/Physics/Assignment 3 (DPH001B).pdf",
+      "title": "Assignment 3 (DPH001B)",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/Physics/Assignment 4 (DPH001B).pdf",
+      "title": "Assignment 4 (DPH001B)",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/Physics/Assignment 5 (DPH001B).pdf",
+      "title": "Assignment 5 (DPH001B)",
+      "description": "Academic resource for university students."
+    },
+    {
       "path": "assignments/SEM-1/cplt/Assignment 5 CPLT new.pdf",
       "title": "Assignment 5 CPLT New",
       "description": "Academic resource for university students."
@@ -91,23 +116,8 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-1/maths/Tutorial sheet 1 (M-I) 2025.pdf",
-      "title": "Tutorial Sheet 1 (M I) 2025",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/maths/Tutorial sheet 10 (M-1) 2025.pdf",
-      "title": "Tutorial Sheet 10 (M 1) 2025",
-      "description": "Academic resource for university students."
-    },
-    {
       "path": "assignments/SEM-1/maths/Tutorial Sheet 11 (M-I) 2025.pdf",
       "title": "Tutorial Sheet 11 (M I) 2025",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/maths/Tutorial sheet 12 (M-1) 2025.pdf",
-      "title": "Tutorial Sheet 12 (M 1) 2025",
       "description": "Academic resource for university students."
     },
     {
@@ -131,16 +141,6 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-1/maths/Tutorial sheet 4 (M-I) 2025 .docx",
-      "title": "Tutorial Sheet 4 (M I) 2025 ",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/maths/Tutorial sheet 6 (M-I) 2025.pdf",
-      "title": "Tutorial Sheet 6 (M I) 2025",
-      "description": "Academic resource for university students."
-    },
-    {
       "path": "assignments/SEM-1/maths/Tutorial Sheet 7 (M-I) 2025.pdf",
       "title": "Tutorial Sheet 7 (M I) 2025",
       "description": "Academic resource for university students."
@@ -156,13 +156,33 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-1/maths/Tutorial sheet-15 (M-I) 2025.pdf",
-      "title": "Tutorial Sheet 15 (M I) 2025",
+      "path": "assignments/SEM-1/maths/Tutorial sheet 1 (M-I) 2025.pdf",
+      "title": "Tutorial Sheet 1 (M I) 2025",
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-1/notes/cplt.docx",
-      "title": "Cplt",
+      "path": "assignments/SEM-1/maths/Tutorial sheet 10 (M-1) 2025.pdf",
+      "title": "Tutorial Sheet 10 (M 1) 2025",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/maths/Tutorial sheet 12 (M-1) 2025.pdf",
+      "title": "Tutorial Sheet 12 (M 1) 2025",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/maths/Tutorial sheet 4 (M-I) 2025 .docx",
+      "title": "Tutorial Sheet 4 (M I) 2025 ",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/maths/Tutorial sheet 6 (M-I) 2025.pdf",
+      "title": "Tutorial Sheet 6 (M I) 2025",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/maths/Tutorial sheet-15 (M-I) 2025.pdf",
+      "title": "Tutorial Sheet 15 (M I) 2025",
       "description": "Academic resource for university students."
     },
     {
@@ -171,28 +191,8 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-1/Physics/Assignment 1 (DPH001B).pdf",
-      "title": "Assignment 1 (DPH001B)",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/Physics/Assignment 2 (DPH001B).pdf",
-      "title": "Assignment 2 (DPH001B)",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/Physics/Assignment 3 (DPH001B).pdf",
-      "title": "Assignment 3 (DPH001B)",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/Physics/Assignment 4 (DPH001B).pdf",
-      "title": "Assignment 4 (DPH001B)",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-1/Physics/Assignment 5 (DPH001B).pdf",
-      "title": "Assignment 5 (DPH001B)",
+      "path": "assignments/SEM-1/notes/cplt.docx",
+      "title": "Cplt",
       "description": "Academic resource for university students."
     },
     {
@@ -236,11 +236,6 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-1/syllabus/cplt.pdf",
-      "title": "Cplt",
-      "description": "Academic resource for university students."
-    },
-    {
       "path": "assignments/SEM-1/syllabus/CS.pdf",
       "title": "CS",
       "description": "Academic resource for university students."
@@ -253,6 +248,11 @@
     {
       "path": "assignments/SEM-1/syllabus/Physics.pdf",
       "title": "Physics",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-1/syllabus/cplt.pdf",
+      "title": "Cplt",
       "description": "Academic resource for university students."
     },
     {
@@ -421,8 +421,8 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-2/C++/PPT and Notes/c++ balaguruswamy book.pdf",
-      "title": "C++ Balaguruswamy Book",
+      "path": "assignments/SEM-2/C++/PPT and Notes/C++ UNIT-5 PPT.pdf",
+      "title": "C++ UNIT 5 PPT",
       "description": "Academic resource for university students."
     },
     {
@@ -433,16 +433,6 @@
     {
       "path": "assignments/SEM-2/C++/PPT and Notes/C++ Unit-2.pptx",
       "title": "C++ Unit 2",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-2/C++/PPT and Notes/C++ UNIT-5 PPT.pdf",
-      "title": "C++ UNIT 5 PPT",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-2/C++/PPT and Notes/Unit 4 ppt.pdf",
-      "title": "Unit 4 Ppt",
       "description": "Academic resource for university students."
     },
     {
@@ -458,6 +448,16 @@
     {
       "path": "assignments/SEM-2/C++/PPT and Notes/UNIT-3-4-NOTES.pdf",
       "title": "UNIT 3 4 NOTES",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-2/C++/PPT and Notes/Unit 4 ppt.pdf",
+      "title": "Unit 4 Ppt",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-2/C++/PPT and Notes/c++ balaguruswamy book.pdf",
+      "title": "C++ Balaguruswamy Book",
       "description": "Academic resource for university students."
     },
     {
@@ -501,23 +501,18 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-2/EC Council/Certified Secure Computer User (CSCU) Version 2 (EC-Council) (Z-Library).pdf",
-      "title": "Certified Secure Computer User (CSCU) Version 2 (EC Council) (Z Library)",
-      "description": "Academic resource for university students."
-    },
-    {
       "path": "assignments/SEM-2/EC Council/CSCU-Exam-Blueprint-v3.pdf",
       "title": "CSCU Exam Blueprint V3",
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-2/EC Council/cscu.pdf",
-      "title": "Cscu",
+      "path": "assignments/SEM-2/EC Council/CSCU_v3_Brochure.pdf",
+      "title": "CSCU V3 Brochure",
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-2/EC Council/CSCU_v3_Brochure.pdf",
-      "title": "CSCU V3 Brochure",
+      "path": "assignments/SEM-2/EC Council/Certified Secure Computer User (CSCU) Version 2 (EC-Council) (Z-Library).pdf",
+      "title": "Certified Secure Computer User (CSCU) Version 2 (EC Council) (Z Library)",
       "description": "Academic resource for university students."
     },
     {
@@ -543,6 +538,11 @@
     {
       "path": "assignments/SEM-2/EC Council/Solved Assignments/Two.md",
       "title": "Two",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-2/EC Council/cscu.pdf",
+      "title": "Cscu",
       "description": "Academic resource for university students."
     },
     {
@@ -866,6 +866,16 @@
       "description": "Academic resource for university students."
     },
     {
+      "path": "assignments/SEM-2/PS/Notes & PPTs/PS 2026 Unit I and II - Simple notes.docx",
+      "title": "PS 2026 Unit I And II   Simple Notes",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-2/PS/Notes & PPTs/PS PPT Unit 1.pptx",
+      "title": "PS PPT Unit 1",
+      "description": "Academic resource for university students."
+    },
+    {
       "path": "assignments/SEM-2/PS/Notes & PPTs/Professional Skills Unit I.pptx",
       "title": "Professional Skills Unit I",
       "description": "Academic resource for university students."
@@ -883,16 +893,6 @@
     {
       "path": "assignments/SEM-2/PS/Notes & PPTs/Professional Skills Unit IV.pptx",
       "title": "Professional Skills Unit IV",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-2/PS/Notes & PPTs/PS 2026 Unit I and II - Simple notes.docx",
-      "title": "PS 2026 Unit I And II   Simple Notes",
-      "description": "Academic resource for university students."
-    },
-    {
-      "path": "assignments/SEM-2/PS/Notes & PPTs/PS PPT Unit 1.pptx",
-      "title": "PS PPT Unit 1",
       "description": "Academic resource for university students."
     },
     {
@@ -921,8 +921,58 @@
       "description": "Academic resource for university students."
     },
     {
+      "path": "assignments/SEM-3/Computer Networks/Networking_Commands_Windows_CMD_Lab_Manual.docx",
+      "title": "Networking Commands Windows CMD Lab Manual",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Computer Networks/Packet_Tracer_DHCP_Network_Lab_Manual.docx",
+      "title": "Packet Tracer DHCP Network Lab Manual",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Computer Networks/Packet_Tracer_Lab_Manual_Server_2PC_2Mobile_Devices.docx",
+      "title": "Packet Tracer Lab Manual Server 2PC 2Mobile Devices",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Computer Networks/Static_IP_Packet_Tracer_Lab_Manual.docx",
+      "title": "Static IP Packet Tracer Lab Manual",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/Analysis of Loops & Big O Examples.pdf",
+      "title": "Analysis Of Loops & Big O Examples",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/Complexity Notes.pdf",
+      "title": "Complexity Notes",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/DSA SHEET.pdf",
+      "title": "DSA SHEET",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/DSA_Syllabus.md",
+      "title": "DSA Syllabus",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/Time_and_Space_Complexity_Practice_Questions.docx",
+      "title": "Time And Space Complexity Practice Questions",
+      "description": "Academic resource for university students."
+    },
+    {
       "path": "assignments/SEM-3/Discrete Mathematics/Assignments/DMS_Assignment_1.md",
       "title": "DMS Assignment 1",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Discrete Mathematics/DMS_Syllabus.md",
+      "title": "DMS Syllabus",
       "description": "Academic resource for university students."
     },
     {
@@ -941,8 +991,8 @@
       "description": "Academic resource for university students."
     },
     {
-      "path": "assignments/SEM-3/Operating Systems/Syllabus.md",
-      "title": "Syllabus",
+      "path": "assignments/SEM-3/Operating Systems/OS_Syllabus.md",
+      "title": "OS Syllabus",
       "description": "Academic resource for university students."
     }
   ]
