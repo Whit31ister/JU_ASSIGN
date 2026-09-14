@@ -1,4 +1,6 @@
 (function bootstrapAssignmentSite(app) {
+  var BASE_TITLE = "JU Assignments | Semester-Wise Academic Notes, Assignments & Solutions";
+
   var state = {
     assignments: [],
     folders: [],
@@ -11,6 +13,59 @@
       search: ""
     }
   };
+
+  function updateDocumentTitle() {
+    if (state.selectedAssignment) {
+      document.title = state.selectedAssignment.title + " | JU Assignments";
+    } else if (state.currentPath.length > 0) {
+      var currentFolder = state.currentPath[state.currentPath.length - 1];
+      document.title = currentFolder + " - Semester Course Materials | JU Assignments";
+    } else if (state.filters.search) {
+      document.title = 'Search: "' + state.filters.search + '" | JU Assignments';
+    } else {
+      document.title = BASE_TITLE;
+    }
+  }
+
+  function updateUrlHash() {
+    if (state.currentPath.length > 0) {
+      var hash = state.currentPath.map(encodeURIComponent).join('/');
+      if (window.location.hash !== '#' + hash) {
+        history.replaceState(null, '', '#' + hash);
+      }
+    } else if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    updateDocumentTitle();
+  }
+
+  function parseUrlHash() {
+    var rawHash = window.location.hash.replace(/^#/, '');
+    if (!rawHash) {
+      state.currentPath = [];
+      return;
+    }
+    var parts = rawHash.split('/').map(decodeURIComponent).filter(Boolean);
+    state.currentPath = parts;
+  }
+
+  function parseSearchParams() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var searchQuery = params.get('search');
+      if (searchQuery) {
+        state.filters.search = searchQuery;
+        var searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+          searchInput.value = searchQuery;
+          var headerSearch = document.getElementById("headerSearch");
+          if (headerSearch) headerSearch.classList.add("is-open");
+        }
+      }
+    } catch (e) {
+      console.warn("Could not parse search params.", e);
+    }
+  }
 
   function filterAssignments() {
     var searchTerm = state.filters.search.trim().toLowerCase();
@@ -72,6 +127,7 @@
       state.selectedAssignmentId = selected ? selected.id : "";
     }
     state.selectedAssignment = selected;
+    updateDocumentTitle();
   }
 
   function computeTotals() {
@@ -82,6 +138,7 @@
     filterAssignments();
     syncSelection();
     computeTotals();
+    updateUrlHash();
     app.ui.render(state);
   }
 
@@ -141,13 +198,17 @@
         var a = document.createElement("a");
         a.href = c.html_url;
         a.target = "_blank";
-        a.title = c.name || c.login;
+        a.rel = "noopener noreferrer";
+        a.title = (c.name || c.login) + " on GitHub";
         
         var img = document.createElement("img");
-        img.src = c.avatar_url;
-        img.alt = c.name || c.login;
+        // Use ?s=72 for compressed, high-performance responsive thumbnail loading
+        img.src = c.avatar_url + (c.avatar_url.indexOf('?') >= 0 ? '&' : '?') + "s=72";
+        img.alt = (c.name || c.login) + " - Contributor to JU Assignments";
         img.className = "contributor-avatar";
         img.loading = "lazy";
+        img.width = 36;
+        img.height = 36;
         
         a.appendChild(img);
         fragment.appendChild(a);
@@ -266,11 +327,18 @@
       });
     }
 
+    // Listen to browser forward/backward hash changes
+    window.addEventListener("hashchange", function() {
+      parseUrlHash();
+      refreshView();
+    });
+
     fetchContributors();
+    parseSearchParams();
+    parseUrlHash();
 
     var manifestResult = await app.catalog.loadManifest();
     state.assignments = manifestResult.assignments.slice();
-    state.currentPath = [];
     refreshView();
   }
 

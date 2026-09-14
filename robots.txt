@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://whit31ister.github.io/JU_ASSIGN/sitemap.xml

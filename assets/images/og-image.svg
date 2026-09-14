@@ -1,0 +1,81 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121212"/>
+      <stop offset="100%" stop-color="#1a1816"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242220"/>
+      <stop offset="100%" stop-color="#1a1816"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b8936f"/>
+      <stop offset="100%" stop-color="#d4af87"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Subtle Grid Pattern -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Outer Card Frame -->
+  <rect x="60" y="60" width="1080" height="510" rx="24" fill="url(#cardGrad)" stroke="#383430" stroke-width="2"/>
+
+  <!-- Brand Icon Squircle -->
+  <rect x="120" y="130" width="96" height="96" rx="22" fill="#2d2925" stroke="#48423c" stroke-width="2"/>
+  <g transform="translate(144, 154)" stroke="url(#accentGrad)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 25.5A3.5 3.5 0 0 1 7.5 22H32"/>
+    <path d="M7.5 2H32v30H7.5A3.5 3.5 0 0 1 4 28.5v-23A3.5 3.5 0 0 1 7.5 2z"/>
+    <line x1="12" y1="10" x2="24" y2="10"/>
+    <line x1="12" y1="16" x2="20" y2="16"/>
+  </g>
+
+  <!-- Badge -->
+  <rect x="240" y="145" width="220" height="34" rx="17" fill="#322c26" stroke="#52473f" stroke-width="1.5"/>
+  <text x="350" y="167" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#d4af87" letter-spacing="1.5" text-anchor="middle">ACADEMIC ARCHIVE</text>
+
+  <!-- Title -->
+  <text x="120" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="64" font-weight="800" fill="#f5f2e9" letter-spacing="-1.5">JU Assignments</text>
+
+  <!-- Subtitle -->
+  <text x="120" y="355" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="500" fill="#a09a8e">Semester-wise archive for university notes, solved papers &amp; assignments</text>
+
+  <!-- Feature Pills -->
+  <g transform="translate(120, 420)">
+    <!-- Pill 1 -->
+    <rect x="0" y="0" width="210" height="46" rx="23" fill="#24201c" stroke="#3d3731" stroke-width="1.5"/>
+    <circle cx="24" cy="23" r="6" fill="#b8936f"/>
+    <text x="42" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#e0dacb">Discrete Maths</text>
+
+    <!-- Pill 2 -->
+    <rect x="230" y="0" width="220" height="46" rx="23" fill="#24201c" stroke="#3d3731" stroke-width="1.5"/>
+    <circle cx="254" cy="23" r="6" fill="#b8936f"/>
+    <text x="272" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#e0dacb">Computer Networks</text>
+
+    <!-- Pill 3 -->
+    <rect x="470" y="0" width="210" height="46" rx="23" fill="#24201c" stroke="#3d3731" stroke-width="1.5"/>
+    <circle cx="494" cy="23" r="6" fill="#b8936f"/>
+    <text x="512" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#e0dacb">Operating Systems</text>
+
+    <!-- Pill 4 -->
+    <rect x="700" y="0" width="160" height="46" rx="23" fill="#24201c" stroke="#3d3731" stroke-width="1.5"/>
+    <circle cx="724" cy="23" r="6" fill="#b8936f"/>
+    <text x="742" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#e0dacb">C++ &amp; DSA</text>
+  </g>
+
+  <!-- URL Footer -->
+  <text x="120" y="525" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#756f65">whit31ister.github.io/JU_ASSIGN</text>
+</svg>

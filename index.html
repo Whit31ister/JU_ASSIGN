@@ -3,17 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="robots" content="index, follow">
+
+  <title>JU Assignments | Semester-Wise Academic Notes, Assignments &amp; Solutions</title>
   <meta
     name="description"
-    content="JU Assignments is a clean semester-wise archive for assignment files stored in the assignments folder."
+    content="JU Assignments is a curated semester-wise academic archive offering university lecture notes, solved assignments, syllabus breakdowns, and study resources."
   >
-  <title>JU Assignments</title>
+  <link rel="canonical" href="https://whit31ister.github.io/JU_ASSIGN/">
+
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f5f2e9" media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JU Assignments">
+  <meta property="og:url" content="https://whit31ister.github.io/JU_ASSIGN/">
+  <meta property="og:title" content="JU Assignments | Semester-Wise Academic Notes &amp; Solutions">
+  <meta property="og:description" content="Access curated college notes, solved assignments, syllabus, and code solutions across semesters.">
+  <meta property="og:image" content="https://whit31ister.github.io/JU_ASSIGN/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="JU Assignments - Semester-Wise Academic Archive">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://whit31ister.github.io/JU_ASSIGN/">
+  <meta name="twitter:title" content="JU Assignments | Semester-Wise Academic Notes &amp; Solutions">
+  <meta name="twitter:description" content="Access curated college notes, solved assignments, syllabus, and code solutions across semesters.">
+  <meta name="twitter:image" content="https://whit31ister.github.io/JU_ASSIGN/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="JU Assignments - Semester-Wise Academic Archive">
+
+  <!-- Google Search Console Verification Placeholder -->
+  <!-- Replace content with your verification code from Google Search Console -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN">
+
+  <!-- Resource Hints for Core Web Vitals -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://unpkg.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css?v=4">
-  <link rel="stylesheet" href="assets/css/components.css?v=6">
+  <link rel="stylesheet" href="assets/css/layout.css?v=5">
+  <link rel="stylesheet" href="assets/css/components.css?v=7">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+  <!-- Structured Data: Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://whit31ister.github.io/JU_ASSIGN/#website",
+        "url": "https://whit31ister.github.io/JU_ASSIGN/",
+        "name": "JU Assignments",
+        "description": "Semester-wise academic assignment and notes archive for university students.",
+        "inLanguage": "en",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://whit31ister.github.io/JU_ASSIGN/?search={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://whit31ister.github.io/JU_ASSIGN/#webpage",
+        "url": "https://whit31ister.github.io/JU_ASSIGN/",
+        "name": "JU Assignments | Semester-Wise Academic Notes & Solutions",
+        "isPartOf": {
+          "@id": "https://whit31ister.github.io/JU_ASSIGN/#website"
+        },
+        "about": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Computer Science & Engineering Course Materials"
+        },
+        "description": "Comprehensive collection of university assignments, solved question sets, and laboratory documentation."
+      }
+    ]
+  }
+  </script>
+
+  <!-- Prevent Theme Flash -->
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -50,7 +133,7 @@
         </span>
 
         <div class="header-search" id="headerSearch">
-          <button id="searchToggleBtn" class="header-icon-btn search-toggle-btn" aria-label="Search" title="Search assignments (/)">
+          <button id="searchToggleBtn" class="header-icon-btn search-toggle-btn" aria-label="Search assignments" title="Search assignments (/)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -61,8 +144,8 @@
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input id="searchInput" type="search" placeholder="Search files, subjects..." autocomplete="off" spellcheck="false">
-            <button id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" title="Clear search" hidden>×</button>
+            <input id="searchInput" type="search" placeholder="Search files, subjects..." autocomplete="off" spellcheck="false" aria-label="Search query">
+            <button id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search query" title="Clear search" hidden>×</button>
             <button id="searchCloseBtn" class="search-close-btn" aria-label="Close search" title="Close (Esc)">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -72,7 +155,7 @@
           </div>
         </div>
 
-        <a href="https://github.com/Whit31ister/JU_ASSIGN" target="_blank" rel="noreferrer" class="github-link header-icon-btn" title="View repository on GitHub" aria-label="GitHub repository">
+        <a href="https://github.com/Whit31ister/JU_ASSIGN" target="_blank" rel="noopener noreferrer" class="github-link header-icon-btn" title="View repository on GitHub" aria-label="GitHub repository">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
           </svg>
@@ -99,13 +182,16 @@
 
     <main class="page-grid">
       <div class="content-header">
-        <div id="breadcrumbList" class="breadcrumbs">
-          <button class="breadcrumb-link" data-index="-1">Home</button>
-        </div>
+        <nav aria-label="Directory Breadcrumbs">
+          <div id="breadcrumbList" class="breadcrumbs">
+            <button class="breadcrumb-link" data-index="-1">Home</button>
+          </div>
+        </nav>
       </div>
 
       <div class="content-grid">
-        <section class="card list-card">
+        <section class="card list-card" aria-labelledby="libraryHeading">
+          <h2 id="libraryHeading" class="sr-only">Course Library</h2>
           <div id="assignmentList" class="assignment-list" aria-live="polite"></div>
           <div id="emptyState" class="empty-state" hidden>
             <h3>No files found</h3>
@@ -114,25 +200,40 @@
         </section>
 
         <div class="right-column">
-          <aside id="detailPanel" class="card detail-card">
-            <p class="detail-kicker">File details</p>
-            <h3>Select a file</h3>
+          <aside id="detailPanel" class="card detail-card" aria-labelledby="detailHeading">
+            <h2 id="detailHeading" class="detail-kicker">File Details</h2>
+            <h3 id="selectedFileTitle">Select a file</h3>
             <p class="detail-text">Click a file to view its metadata here.</p>
           </aside>
 
-          <aside id="contributorsPanel" class="card contributors-card">
-            <p class="detail-kicker">Contributors</p>
+          <aside id="contributorsPanel" class="card contributors-card" aria-labelledby="contributorsHeading">
+            <h2 id="contributorsHeading" class="detail-kicker">Contributors</h2>
             <div id="contributorsList" class="contributors-list"></div>
           </aside>
         </div>
       </div>
     </main>
+
+    <!-- Crawler and No-JS Accessible Fallback Navigation -->
+    <noscript>
+      <section class="noscript-section" style="padding: 2rem; margin-top: 2rem; border: 1px solid #dcd6c6; border-radius: 8px;">
+        <h2>Direct Assignment Archive Navigation</h2>
+        <p>JavaScript is disabled in your browser. Below are direct links to indexed semesters and core courses:</p>
+        <ul>
+          <li><a href="assignments/SEM-1/">Semester 1 Course Materials (Physics, CPLT, DL, Maths, CS)</a></li>
+          <li><a href="assignments/SEM-2/">Semester 2 Course Materials (C++, Engineering Mathematics, Excel, Linux)</a></li>
+          <li><a href="assignments/SEM-3/">Semester 3 Course Materials (Computer Networks, Discrete Mathematics, Operating Systems)</a></li>
+          <li><a href="assignments/manifest.json">Full Catalog Manifest (JSON)</a></li>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+        </ul>
+      </section>
+    </noscript>
   </div>
 
-  <div id="fileViewerModal" class="modal" hidden>
+  <div id="fileViewerModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
       <header class="modal-header">
-        <h3 id="modalTitle">File Viewer</h3>
+        <h2 id="modalTitle">File Viewer</h2>
         <div class="viewer-controls">
           <button id="zoomOutBtn" class="icon-button" aria-label="Zoom Out" title="Zoom Out">−</button>
           <button id="zoomInBtn" class="icon-button" aria-label="Zoom In" title="Zoom In">+</button>
@@ -140,30 +241,32 @@
         </div>
       </header>
       <div id="modalBody" class="modal-body">
-        <!-- Content will be injected here -->
+        <!-- Content injected dynamically -->
       </div>
     </div>
   </div>
 
-  <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
-  <script src="https://unpkg.com/docx-preview/dist/docx-preview.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({ 
-        startOnLoad: false, 
-        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default' 
-      });
-    }
+  <!-- Third-party scripts deferred for optimal Core Web Vitals (FCP & LCP) -->
+  <script defer src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
+  <script defer src="https://unpkg.com/docx-preview/dist/docx-preview.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script defer>
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.mermaid) {
+        mermaid.initialize({ 
+          startOnLoad: false, 
+          theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default' 
+        });
+      }
+    });
   </script>
   
   <script defer src="assets/js/core/config.js"></script>
   <script defer src="assets/js/core/parser.js"></script>
   <script defer src="assets/js/services/catalog.js"></script>
-  <script defer src="assets/js/ui/render.js?v=7"></script>
-  <script defer src="assets/js/app.js?v=4"></script>
+  <script defer src="assets/js/ui/render.js?v=8"></script>
+  <script defer src="assets/js/app.js?v=5"></script>
 </body>
 </html>
