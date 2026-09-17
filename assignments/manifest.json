@@ -921,6 +921,11 @@
       "description": "Academic resource for university students."
     },
     {
+      "path": "assignments/SEM-3/Computer Networks/Assignments/CN_Assignment_2.md",
+      "title": "CN Assignment 2",
+      "description": "Academic resource for university students."
+    },
+    {
       "path": "assignments/SEM-3/Computer Networks/Networking_Commands_Windows_CMD_Lab_Manual.docx",
       "title": "Networking Commands Windows CMD Lab Manual",
       "description": "Academic resource for university students."
@@ -943,6 +948,16 @@
     {
       "path": "assignments/SEM-3/Data Structures And Algoritms/Analysis of Loops & Big O Examples.pdf",
       "title": "Analysis Of Loops & Big O Examples",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/Assignments/Assignment_1_Sheet_1.md",
+      "title": "Assignment 1 Sheet 1",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Data Structures And Algoritms/Assignments/Assignment_1_Sheet_2.md",
+      "title": "Assignment 1 Sheet 2",
       "description": "Academic resource for university students."
     },
     {
@@ -976,6 +991,31 @@
       "description": "Academic resource for university students."
     },
     {
+      "path": "assignments/SEM-3/ECSS/Assignments/ECSS_Assignment_1.md",
+      "title": "ECSS Assignment 1",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/ECSS/Assignments/ECSS_Assignment_2.md",
+      "title": "ECSS Assignment 2",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/ECSS/Assignments/ECSS_Assignment_3.md",
+      "title": "ECSS Assignment 3",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/ECSS/Assignments/ECSS_Assignment_4.md",
+      "title": "ECSS Assignment 4",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/ECSS/Assignments/ECSS_Assignment_5.md",
+      "title": "ECSS Assignment 5",
+      "description": "Academic resource for university students."
+    },
+    {
       "path": "assignments/SEM-3/Operating Systems/Andrew S. Tanenbaum - Modern Operating Systems.pdf",
       "title": "Andrew S. Tanenbaum   Modern Operating Systems",
       "description": "Academic resource for university students."
@@ -986,6 +1026,11 @@
       "description": "Academic resource for university students."
     },
     {
+      "path": "assignments/SEM-3/Operating Systems/Assignments/OS_Assignment_2.md",
+      "title": "OS Assignment 2",
+      "description": "Academic resource for university students."
+    },
+    {
       "path": "assignments/SEM-3/Operating Systems/OS GALVIN BOOK.pdf",
       "title": "OS GALVIN BOOK",
       "description": "Academic resource for university students."
@@ -993,6 +1038,16 @@
     {
       "path": "assignments/SEM-3/Operating Systems/OS_Syllabus.md",
       "title": "OS Syllabus",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Operating Systems/PPTs/Unit_1_PPT.pptx",
+      "title": "Unit 1 PPT",
+      "description": "Academic resource for university students."
+    },
+    {
+      "path": "assignments/SEM-3/Operating Systems/PPTs/Unit_2_PPT.pptx",
+      "title": "Unit 2 PPT",
       "description": "Academic resource for university students."
     }
   ]
